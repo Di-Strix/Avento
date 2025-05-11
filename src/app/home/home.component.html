@@ -1,0 +1,65 @@
+<header>
+  <img
+    src="Airplane_.png"
+    alt="Imagine a plane"
+  />
+  <h1>Avento</h1>
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Where from?"
+    />
+    <input
+      type="text"
+      placeholder="Where to?"
+    />
+    <input
+      type="date"
+      placeholder="When?"
+    />
+    <input
+      type="number"
+      placeholder="Passengers"
+      min="1"
+    />
+    <button>Search</button>
+  </div>
+  <div class="profile-container">
+    <details>
+      <summary class="profile-icon">👤</summary>
+      <nav class="dropdown-menu">
+        <ul>
+          <li><a href="profile.html">My Profile</a></li>
+          <li><a href="favourite">My Favourite</a></li>
+          <li><a href="settings">Settings</a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+<main>
+  <section class="trending">
+    <h2>Trending</h2>
+    <div class="cards-wrapper">
+      @for (card of visible_cards; track card.name) {
+        <div class="card">
+          <div class="card-content">
+            <h3>{{ card.country }}</h3>
+            <p class="author">by {{ card.name }}</p>
+            <p>Tickets price: {{ card.ticket_price }}</p>
+            <p>Hotel price: {{ card.hotel_price }}</p>
+            <p>Duration: {{ card.duration }}</p>
+          </div>
+          <img
+            [src]="card.image"
+            alt="Imagine {{ card.country }}"
+          />
+        </div>
+      }
+      <div #scrollAnchor></div>
+    </div>
+  </section>
+</main>
+<footer>
+  <p>&copy; Avento 2025</p>
+</footer>
