@@ -5,8 +5,8 @@ html {
   @include mat.theme(
     (
       color: (
-        primary: theme.$primary-palette,
-        tertiary: theme.$tertiary-palette,
+        primary: mat.$azure-palette,
+        tertiary: mat.$spring-green-palette,
       ),
       typography: Roboto,
       density: 0,
