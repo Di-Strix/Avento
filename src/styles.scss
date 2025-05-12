@@ -1,12 +1,12 @@
 @use '@angular/material' as mat;
+@use './theme-colors' as theme;
 
 html {
   @include mat.theme(
     (
       color: (
-        theme-type: light,
-        primary: mat.$azure-palette,
-        tertiary: mat.$blue-palette,
+        primary: theme.$primary-palette,
+        tertiary: theme.$tertiary-palette,
       ),
       typography: Roboto,
       density: 0,
