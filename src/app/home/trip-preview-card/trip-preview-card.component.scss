@@ -17,6 +17,15 @@ mat-card {
     flex-flow: column nowrap;
     justify-content: space-between;
 
+    .country {
+      font: var(--mat-sys-headline-medium);
+    }
+
+    .author {
+      font: var(--mat-sys-title-medium);
+      color: var(--mat-sys-secondary);
+    }
+
     .duration {
       font: var(--mat-sys-title-medium);
     }

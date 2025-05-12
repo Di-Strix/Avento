@@ -2,12 +2,12 @@
   <div class="content">
     <mat-card-header class="header">
       <mat-card-title-group>
-        <mat-card-title> {{ trip.country }} </mat-card-title>
-        <mat-card-subtitle>by {{ trip.author }}</mat-card-subtitle>
+        <mat-card-title class="country"> {{ trip.country }} </mat-card-title>
+        <mat-card-subtitle class="author">by {{ trip.author }}</mat-card-subtitle>
       </mat-card-title-group>
     </mat-card-header>
     <mat-card-content>
-      <p class="duration">{{ trip.duration }} days,</p>
+      <p class="duration">{{ trip.duration }} days</p>
       <p class="price">${{ trip.totalPrice }}</p>
     </mat-card-content>
   </div>
