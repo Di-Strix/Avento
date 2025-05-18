@@ -3,8 +3,11 @@
 mat-card {
   display: flex;
   flex-flow: row nowrap;
-  max-width: 450px;
-  height: 190px;
+
+  max-width: 900px;
+  min-height: 190px;
+  max-height: 250px;
+
   overflow: hidden;
   cursor: pointer;
 
