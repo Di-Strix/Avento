@@ -1,1 +1,58 @@
-<p>home works!</p>
+<div class="splash-screen">
+  <img
+    class="splash-pattern"
+    src="home/splash-pattern.svg"
+  />
+  <h1 class="brand-name">Avento</h1>
+
+  <mat-card class="search-bar">
+    <mat-form-field
+      appearance="outline"
+      floatLabel="always"
+    >
+      <mat-label>From</mat-label>
+      <input
+        matInput
+        placeholder="Vienna"
+      />
+    </mat-form-field>
+    <mat-form-field
+      appearance="outline"
+      floatLabel="always"
+    >
+      <mat-label>To</mat-label>
+      <input
+        matInput
+        placeholder="Paris"
+      />
+    </mat-form-field>
+    <button
+      mat-fab
+      class="search-button"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-card>
+
+  <div></div>
+  <div></div>
+</div>
+
+<main class="trending">
+  <h2 class="trending-header">Trending</h2>
+  <mat-card
+    class="trending-cards-container"
+    appearance="outlined"
+  >
+    @for (trip of trips; track trip.id) {
+      <app-trip-preview-card
+        [trip]="trip"
+        class="trending-card"
+      ></app-trip-preview-card>
+    }
+  </mat-card>
+</main>
+
+<footer>
+  <p>&copy; Avento 2025</p>
+</footer>

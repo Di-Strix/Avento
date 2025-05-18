@@ -1,0 +1,100 @@
+@use '@angular/material' as mat;
+
+:host {
+  background-color: var(--mat-sys-surface-container-low);
+}
+
+.splash-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  height: 110vh;
+  width: 100%;
+  margin-bottom: calc(-160px - 10vh);
+
+  background-color: var(--app-splash-screen-color);
+
+  .splash-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0.04;
+  }
+
+  .brand-name {
+    position: relative;
+    height: 0px;
+
+    color: var(--mat-sys-on-primary);
+    font: var(--mat-sys-display-large);
+    font-weight: 500;
+  }
+
+  .search-bar {
+    padding: 20px;
+    padding-bottom: 0px;
+
+    width: max-content;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+    .search-button {
+      margin-bottom: 20px; // Account for field's gutter
+
+      @include mat.fab-overrides(
+        (
+          container-color: var(--mat-sys-primary),
+          foreground-color: var(--mat-sys-on-primary),
+          ripple-color: rgb(from var(--mat-sys-on-primary) r g b / 10%),
+          container-elevation-shadow: var(--mat-sys-level0),
+          hover-container-elevation-shadow: var(--mat-sys-level0),
+          pressed-container-elevation-shadow: var(--mat-sys-level0),
+          focus-container-elevation-shadow: var(--mat-sys-level0),
+        )
+      );
+    }
+  }
+}
+
+.trending-header {
+  position: relative;
+  margin-bottom: 5px;
+
+  font: var(--mat-sys-display-medium);
+  font-weight: 500;
+  color: rgb(from var(--mat-sys-on-primary) r g b / 70%);
+}
+
+.trending {
+  max-width: 800px;
+  width: 80%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  .trending-cards-container {
+    width: 100%;
+    padding: 24px;
+
+    .trending-card:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+footer {
+  text-align: right;
+  margin-right: 8px;
+}
