@@ -2,6 +2,8 @@
 @use './theme-colors' as theme;
 
 html {
+  --app-splash-screen-color: #2e67ca;
+
   @include mat.theme(
     (
       color: (
