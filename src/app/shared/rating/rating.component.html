@@ -1,0 +1,11 @@
+@for (testRating of entries; track $index) {
+  @let relativeRating = rating - testRating;
+
+  @if (relativeRating >= 0) {
+    <mat-icon>star</mat-icon>
+  } @else if (relativeRating >= -0.5) {
+    <mat-icon>star_half</mat-icon>
+  } @else {
+    <mat-icon>star_outline</mat-icon>
+  }
+}
