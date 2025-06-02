@@ -48,3 +48,21 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.sub-section {
+  margin-bottom: calc(12px + 2px * var(--mat-sys-density));
+
+  &-header {
+    font: var(--mat-sys-title-medium);
+  }
+
+  * > &:last-of-type {
+    margin-bottom: 0px;
+  }
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--mat-sys-tertiary);
+}
