@@ -1,0 +1,87 @@
+<section class="sub-section">
+  <h3 class="sub-section-header">Author comment</h3>
+  <p>{{ plan.comment }}</p>
+</section>
+
+<section class="sub-section">
+  <h3 class="sub-section-header">Overview:</h3>
+  <ul>
+    <li><b>Name:</b> {{ plan.hotel.name }}</li>
+    <li>
+      <b>Website: </b>
+      <a
+        class="link"
+        target="_blank"
+        [href]="plan.hotel.website"
+      >
+        {{ plan.hotel.website }}
+      </a>
+    </li>
+    <li>
+      <div class="rating-container">
+        <b>Rating:</b>
+        &nbsp;
+        <app-rating
+          [maxRating]="5"
+          [rating]="plan.hotel.rating"
+        ></app-rating>
+        <span>({{ plan.hotel.rating }}/5)</span>
+      </div>
+    </li>
+    <li>
+      <div class="carousel-container">
+        @for (url of plan.hotel.photos; track url) {
+          <img
+            class="carousel-item"
+            [src]="url"
+            width="300px"
+          />
+        }
+      </div>
+    </li>
+  </ul>
+</section>
+
+@if (plan.alternatives.length) {
+  <section class="sub-section">
+    <h3 class="sub-section-header">Alternatives</h3>
+    <div class="alternatives-container">
+      @for (alternative of plan.alternatives; track $index) {
+        <mat-card class="alternative-card">
+          <mat-card-header>
+            <div mat-card-avatar>
+              <!-- <img
+                src="user-avatar-placeholder.svg"
+                alt="User avatar"
+                class="avatar"
+              /> -->
+              <mat-icon class="avatar-placeholder"> account_circle </mat-icon>
+            </div>
+
+            <mat-card-title>
+              <a
+                class="link"
+                [routerLink]="['/user', alternative.reviewer.id]"
+              >
+                {{ alternative.reviewer.name }}
+              </a>
+            </mat-card-title>
+            <mat-card-subtitle>Avento user</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            [src]="alternative.hotel.photos[0]"
+          />
+
+          <mat-card-content>
+            <p>
+              <b> {{ alternative.hotel.name }} </b>
+              <br />
+              {{ alternative.comment }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  </section>
+}

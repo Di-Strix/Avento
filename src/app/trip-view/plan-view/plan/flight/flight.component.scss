@@ -1,0 +1,50 @@
+ol.stepper {
+  counter-reset: item;
+}
+
+ol.stepper > li {
+  counter-increment: item;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  height: 24px;
+  margin: calc(24px + 4px * var(--mat-sys-density));
+
+  font: var(--mat-sys-label-large);
+}
+
+ol.stepper > li:before {
+  content: counter(item);
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: calc(12px + 2px * var(--mat-sys-density));
+
+  width: 1.5em;
+  height: 1.5em;
+
+  border-radius: var(--mat-sys-corner-full);
+  background-color: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  font: var(--mat-sys-label-large);
+}
+
+ol.stepper > li:not(:last-of-type):after {
+  --step-margin: calc(24px + 4px * var(--mat-sys-density));
+
+  content: '';
+  position: absolute;
+
+  border-left: 1px solid var(--mat-sys-outline);
+
+  top: calc(24px + 4px + 1px * var(--mat-sys-density));
+  left: calc(1.5em / 2);
+  bottom: calc(0px - var(--step-margin) + 4px + 1px * var(--mat-sys-density));
+}

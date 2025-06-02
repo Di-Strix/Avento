@@ -1,0 +1,18 @@
+.accordion-header {
+  &-prefix {
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+  }
+
+  &-prefix-icon {
+    color: var(--mat-sys-secondary);
+
+    margin-right: 4px;
+    scale: 0.8;
+  }
+
+  &-arrow-forward {
+    scale: 0.8;
+  }
+}

@@ -1,0 +1,54 @@
+<mat-accordion>
+  @for (planItem of plan; track $index) {
+    @switch (planItem.type) {
+      @case ('flight') {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b class="accordion-header-prefix">
+                <mat-icon class="accordion-header-prefix-icon"> airlines </mat-icon>
+                Flight:
+              </b>
+              {{ planItem.from }}
+              <mat-icon class="accordion-header-arrow-forward"> arrow_forward </mat-icon>
+              {{ planItem.to }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <app-flight [plan]="planItem"></app-flight>
+        </mat-expansion-panel>
+      }
+      @case ('stay') {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b class="accordion-header-prefix">
+                <mat-icon class="accordion-header-prefix-icon"> hotel </mat-icon>
+                Stay:
+              </b>
+              {{ planItem.hotel.name }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <app-stay [plan]="planItem"></app-stay>
+        </mat-expansion-panel>
+      }
+
+      @case ('attraction') {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b class="accordion-header-prefix">
+                <mat-icon class="accordion-header-prefix-icon"> explore </mat-icon>
+                Visit:
+              </b>
+              {{ planItem.attraction.name }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <app-attraction [plan]="planItem"></app-attraction>
+        </mat-expansion-panel>
+      }
+    }
+  }
+</mat-accordion>

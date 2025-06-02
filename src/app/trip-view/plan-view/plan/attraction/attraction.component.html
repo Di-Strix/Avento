@@ -1,0 +1,43 @@
+<section class="sub-section">
+  <h3 class="sub-section-header">Author comment</h3>
+  <p>{{ plan.comment }}</p>
+</section>
+
+<section class="sub-section">
+  <h3 class="sub-section-header">Overview:</h3>
+  <ul>
+    <li><b>Name:</b> {{ plan.attraction.name }}</li>
+    <li>
+      <b>Website: </b>
+      <a
+        class="link"
+        target="_blank"
+        [href]="plan.attraction.website"
+      >
+        {{ plan.attraction.website }}
+      </a>
+    </li>
+    <li>
+      <div class="rating-container">
+        <b>Rating:</b>
+        &nbsp;
+        <app-rating
+          [maxRating]="5"
+          [rating]="plan.attraction.rating"
+        ></app-rating>
+        <span>({{ plan.attraction.rating }}/5)</span>
+      </div>
+    </li>
+    <li>
+      <div class="carousel-container">
+        @for (url of plan.attraction.photos; track url) {
+          <img
+            class="carousel-item"
+            [src]="url"
+            width="300px"
+          />
+        }
+      </div>
+    </li>
+  </ul>
+</section>

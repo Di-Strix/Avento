@@ -1,0 +1,43 @@
+<form
+  class="post-comment-form"
+  (keydown.enter)="$event.preventDefault()"
+  (ngSubmit)="postComment()"
+>
+  <mat-form-field class="comment-field">
+    <mat-label> Summary </mat-label>
+    @let titleControl = form.controls.title;
+    <input
+      matInput
+      [formControl]="titleControl"
+      type="text"
+      required
+    />
+    <mat-hint align="end">{{ titleControl.value.length }} / 30</mat-hint>
+
+    @if (titleControl.hasError('minlength')) {
+      <mat-error>Comment title must be 3 or more symbols</mat-error>
+    }
+    @if (titleControl.hasError('maxlength')) {
+      <mat-error>Comment title must not exceed 30 symbols</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="comment-input-summary">
+    @let contentControl = form.controls.content;
+    <mat-label>Details</mat-label>
+    <textarea
+      matInput
+      [formControl]="contentControl"
+      class="comment-field"
+      cols="38"
+      rows="3"
+    ></textarea>
+  </mat-form-field>
+  <button
+    mat-flat-button
+    class="comment-publish-button"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+    Publish
+  </button>
+</form>

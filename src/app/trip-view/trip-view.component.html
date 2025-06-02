@@ -1,0 +1,121 @@
+@if (trip) {
+  <!-- <mat-toolbar>
+    <span>Avento</span>
+
+    <span class="spacer"></span>
+
+    <div class="header-directions">
+      @let from = trip.directions.from;
+      @let to = trip.directions.to;
+      <mat-icon>flight_takeoff</mat-icon>
+      {{ from.name }}
+      <mat-icon> arrow_forward </mat-icon>
+      {{ to.name }}
+      <mat-icon>flight_land</mat-icon>
+    </div>
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button><mat-icon> notifications </mat-icon></button>
+    <button mat-icon-button><mat-icon> account_circle </mat-icon></button>
+  </mat-toolbar> -->
+
+  <app-header>
+    <div
+      class="header-directions"
+      align-center
+    >
+      @let from = trip.directions.from;
+      @let to = trip.directions.to;
+      <mat-icon>flight_takeoff</mat-icon>
+      {{ from.name }}
+      <mat-icon> arrow_forward </mat-icon>
+      {{ to.name }}
+      <mat-icon>flight_land</mat-icon>
+    </div>
+  </app-header>
+  <main>
+    <!-- Info -->
+    <mat-card
+      appearance="outlined"
+      class="section"
+    >
+      <mat-card-header>
+        <mat-card-title> Trip details </mat-card-title>
+        <mat-card-subtitle>
+          Author:
+          <a
+            class="link"
+            [routerLink]="['/user', trip.info.author.id]"
+            >{{ trip.info.author.name }}</a
+          >
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{ trip.info.description }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Plan -->
+    <mat-card
+      appearance="outlined"
+      class="section"
+    >
+      <mat-card-header>
+        <mat-card-title> Trip plan </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-plan-view [plan]="trip.plan"></app-plan-view>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Comments -->
+    <mat-card
+      appearance="outlined"
+      class="section"
+    >
+      <mat-card-header>
+        <mat-card-title> Comments </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <section class="sub-section">
+          <div class="comments-container">
+            @for (comment of trip.comments; track $index) {
+              <div class="comment">
+                <i>
+                  <a
+                    class="link"
+                    [routerLink]="['/user', comment.author.id]"
+                  >
+                    {{ comment.author.name }}
+                  </a>
+                  writes:
+                </i>
+                <blockquote>
+                  <h3>{{ comment.title }}</h3>
+
+                  {{ comment.content }}
+                </blockquote>
+              </div>
+            }
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Comments -->
+    <mat-card
+      appearance="outlined"
+      class="section"
+    >
+      <mat-card-header>
+        <mat-card-title> Post comment </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-post-comment></app-post-comment>
+      </mat-card-content>
+    </mat-card>
+  </main>
+}

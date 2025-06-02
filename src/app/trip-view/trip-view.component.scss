@@ -1,0 +1,48 @@
+main {
+  --main-spacing: calc(20px + 3px * var(--mat-sys-density));
+
+  max-width: 1000px;
+  margin: 0 auto var(--main-spacing);
+  padding: 0 var(--main-spacing) var(--main-spacing);
+}
+
+main > .section {
+  margin-top: var(--main-spacing);
+}
+
+mat-card-header {
+  margin-bottom: 8px;
+}
+
+.header-directions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+/* 
+============================
+========= Comments =========
+============================
+*/
+
+.comments-container {
+  display: flex;
+  flex-flow: column nowrap;
+
+  gap: calc(16px + 2px * var(--mat-sys-density));
+}
+
+.comments-container .comment {
+  position: relative;
+}
+
+.comments-container .comment:not(:last-of-type)::after {
+  content: '';
+
+  position: absolute;
+  width: 100%;
+  bottom: calc(-16px / 2);
+
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+}

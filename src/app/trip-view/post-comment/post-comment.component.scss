@@ -1,0 +1,15 @@
+.post-comment-form {
+  display: flex;
+  flex-flow: column nowrap;
+
+  gap: 8px;
+  max-width: 400px;
+}
+
+.comment-field {
+  width: 100%;
+}
+
+.comment-input-summary {
+  width: 100%;
+}
