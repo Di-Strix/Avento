@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatIconButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIcon } from '@angular/material/icon';
@@ -24,7 +23,6 @@ import { PostCommentComponent } from './post-comment/post-comment.component';
     MatIcon,
     PostCommentComponent,
     MatToolbarModule,
-    MatIconButton,
     PlanViewComponent,
     RouterLink,
     HeaderComponent,
