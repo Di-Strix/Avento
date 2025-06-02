@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { RouterLink } from '@angular/router';
 
 import { TripPreview } from '../shared/trip-preview';
 
@@ -11,7 +12,15 @@ import { TripPreviewCardComponent } from './trip-preview-card/trip-preview-card.
 
 @Component({
   selector: 'app-home',
-  imports: [TripPreviewCardComponent, MatFormFieldModule, MatInputModule, MatFabButton, MatCardModule, MatIconModule],
+  imports: [
+    TripPreviewCardComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    MatFabButton,
+    MatCardModule,
+    MatIconModule,
+    RouterLink,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

@@ -48,6 +48,7 @@
       <app-trip-preview-card
         [trip]="trip"
         class="trending-card"
+        [routerLink]="['/trip', trip.id]"
       ></app-trip-preview-card>
     }
   </mat-card>
