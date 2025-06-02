@@ -46,3 +46,24 @@ mat-card-header {
 
   border-bottom: 1px solid var(--mat-sys-outline-variant);
 }
+
+.post-comment-section {
+  position: relative;
+  overflow: hidden;
+
+  @media screen and (max-width: 800px) {
+    .bg-icon {
+      display: none;
+    }
+  }
+
+  .bg-icon {
+    position: absolute;
+    color: rgb(from var(--mat-sys-primary) r g b / 5%);
+    scale: 18;
+    right: 0;
+    bottom: 0;
+
+    transform: translate(-45%, -35%);
+  }
+}
