@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <span>Avento</span>
+  <ng-content select="[align-left]"></ng-content>
+
+  <span class="spacer"></span>
+
+  <ng-content select="[align-center]"></ng-content>
+
+  <span class="spacer"></span>
+
+  <ng-content select="[align-right]"></ng-content>
+  <button mat-icon-button><mat-icon> notifications </mat-icon></button>
+  <button mat-icon-button><mat-icon> account_circle </mat-icon></button>
+</mat-toolbar>
