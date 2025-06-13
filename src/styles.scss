@@ -53,6 +53,10 @@ body {
   flex: 1 1 auto;
 }
 
+.max-content-container {
+  max-width: 1200px;
+}
+
 .sub-section {
   margin-bottom: calc(12px + 2px * var(--mat-sys-density));
 
