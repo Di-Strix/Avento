@@ -8,6 +8,20 @@
   background-color: var(--mat-sys-surface-container-low);
 }
 
+.header {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+
+  --app-header-icon-color: var(--mat-sys-on-primary);
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: none,
+      container-text-color: var(--mat-sys-on-primary),
+    )
+  );
+}
+
 .splash-screen {
   position: relative;
   display: flex;

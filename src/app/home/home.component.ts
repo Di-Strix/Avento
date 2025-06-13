@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { MatFabButton } from '@angular/material/button';
+import { MatFabButton, MatIconButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
 
+import { HeaderComponent } from '../shared/header/header.component';
 import { TripPreview } from '../shared/trip-preview';
 
 import { TripPreviewCardComponent } from './trip-preview-card/trip-preview-card.component';
@@ -20,6 +21,7 @@ import { TripPreviewCardComponent } from './trip-preview-card/trip-preview-card.
     MatCardModule,
     MatIconModule,
     RouterLink,
+    HeaderComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
