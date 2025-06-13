@@ -49,6 +49,10 @@ body {
   padding: 0;
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
 .sub-section {
   margin-bottom: calc(12px + 2px * var(--mat-sys-density));
 
