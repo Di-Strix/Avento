@@ -8,4 +8,8 @@ a.brand-name {
   width: inherit;
   height: inherit;
   align-items: inherit;
+
+  button[mat-icon-button] {
+    color: var(--app-header-icon-color, var(--mat-sys-on-surface-variant));
+  }
 }
