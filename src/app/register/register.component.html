@@ -1,0 +1,117 @@
+<app-header></app-header>
+
+<div class="max-content-container registration-form-container">
+  <form (ngSubmit)="onSubmit()">
+    <mat-card class="registration-form">
+      <mat-card-header>
+        <mat-card-title> Register </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="card-content">
+        <mat-form-field
+          class="input-field"
+          appearance="outline"
+        >
+          @let usernameControl = credentials.controls.username;
+
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-label>Username or email</mat-label>
+          <input
+            matInput
+            autocomplete="username"
+            type="email"
+            [formControl]="usernameControl"
+          />
+          @if (usernameControl.invalid) {
+            <mat-error>{{ usernameErrorMessage() }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field
+          class="input-field"
+          appearance="outline"
+        >
+          @let passwordControl = credentials.controls.password;
+          <input
+            type="checkbox"
+            [style]="{ display: 'none' }"
+            #passwordVisibility
+          />
+
+          <mat-icon matPrefix>key</mat-icon>
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            autocomplete="new-password"
+            [type]="passwordVisibility.checked ? 'text' : 'password'"
+            [formControl]="passwordControl"
+          />
+
+          @if (passwordControl.invalid) {
+            <mat-error>{{ passwordErrorMessage(passwordControl) }}</mat-error>
+          }
+
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="passwordVisibility.click()"
+          >
+            <mat-icon>{{ passwordVisibility.checked ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field
+          class="input-field"
+          appearance="outline"
+        >
+          @let repeatPasswordControl = credentials.controls.repeatPassword;
+          <input
+            type="checkbox"
+            [style]="{ display: 'none' }"
+            #repeatPasswordVisibility
+          />
+
+          <mat-icon matPrefix>key</mat-icon>
+          <mat-label>Repeat Password</mat-label>
+          <input
+            matInput
+            autocomplete="new-password"
+            [type]="repeatPasswordVisibility.checked ? 'text' : 'password'"
+            [formControl]="repeatPasswordControl"
+          />
+          @if (repeatPasswordControl.invalid) {
+            <mat-error>{{ passwordErrorMessage(repeatPasswordControl) }}</mat-error>
+          }
+
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="[repeatPasswordVisibility.click()]"
+          >
+            <mat-icon>{{ repeatPasswordVisibility.checked ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <span class="spacer"></span>
+        <button
+          mat-flat-button
+          type="submit"
+          [disabled]="credentials.invalid || loading"
+        >
+          Sign Up
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  <p>
+    Have an account?
+    <a
+      routerLink="/login"
+      queryParamsHandling="preserve"
+      >Login</a
+    >
+  </p>
+</div>
