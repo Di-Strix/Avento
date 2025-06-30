@@ -13,7 +13,7 @@
   width: 100%;
   z-index: 1;
 
-  --app-header-icon-color: var(--mat-sys-on-primary);
+  --mdc-icon-button-icon-color: var(--mat-sys-on-primary);
   @include mat.toolbar-overrides(
     (
       container-background-color: none,
