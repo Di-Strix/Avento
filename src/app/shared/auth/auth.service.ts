@@ -44,27 +44,6 @@ export class AuthService {
       password,
     };
 
-    if (username === 'aptemvs' && password === 'ILoveAnime')
-      return of({
-        token: '',
-        user: {
-          id: 'abc',
-          firstName: 'Aptem',
-          secondName: 'VS',
-          email: 'brainrotGod@meta.com',
-          imgUrl: '',
-          phone: '',
-        },
-      }).pipe(
-        tap((response) => {
-          this._authToken = response.token;
-          this._currentUser$.next(response.user);
-        }),
-        switchMap(() => this.currentUser$),
-        first(),
-        tap(() => redirectTo && this.router.navigateByUrl(redirectTo))
-      );
-
     return this.httpClient.post<AuthRequests.Login.ResponseSuccess>(`${environment.auth.endpoint}/login`, payload).pipe(
       tap((response) => {
         this._authToken = response.token;
