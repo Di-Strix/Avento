@@ -31,6 +31,7 @@
           @for (trip of userTrips.slice(0, 5); track trip.id) {
             <app-trip-preview-card
               [trip]="trip"
+              appearance="outlined"
               [showAuthor]="false"
               vertical
               [routerLink]="['/trip', trip.id]"
@@ -67,6 +68,7 @@
           @for (trip of favoriteTrips; track trip.id) {
             <app-trip-preview-card
               [trip]="trip"
+              appearance="outlined"
               vertical
               [routerLink]="['/trip', trip.id]"
             ></app-trip-preview-card>
