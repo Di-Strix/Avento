@@ -8,7 +8,7 @@ import {
   MatCardTitleGroup,
 } from '@angular/material/card';
 
-import { TripPreview } from '../../shared/trip-preview';
+import { TripPreview } from '../trip-preview';
 
 @Component({
   selector: 'app-trip-preview-card',

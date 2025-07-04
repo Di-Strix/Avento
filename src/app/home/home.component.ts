@@ -8,8 +8,7 @@ import { RouterLink } from '@angular/router';
 
 import { HeaderComponent } from '../shared/header/header.component';
 import { TripPreview } from '../shared/trip-preview';
-
-import { TripPreviewCardComponent } from './trip-preview-card/trip-preview-card.component';
+import { TripPreviewCardComponent } from '../shared/trip-preview-card/trip-preview-card.component';
 
 @Component({
   selector: 'app-home',
