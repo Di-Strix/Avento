@@ -1,0 +1,100 @@
+<app-header></app-header>
+
+@if (user) {
+  <div class="max-content-container container">
+    <div class="account-info">
+      <div class="identity">
+        <div class="avatar">
+          @if (user.imgUrl) {
+            <img [src]="user.imgUrl" />
+          } @else {
+            <mat-icon class="avatar-placeholder"> account_circle </mat-icon>
+          }
+        </div>
+        <div>
+          <h2 class="name">{{ user.firstName }} {{ user.secondName }}</h2>
+          <h3 class="username">{{ user.username }}</h3>
+        </div>
+        <button
+          mat-stroked-button
+          routerLink="edit"
+        >
+          Edit Profile
+        </button>
+      </div>
+    </div>
+    <main>
+      <section>
+        <h2 class="section-header">Your Trips</h2>
+
+        <div class="card-list">
+          @for (trip of userTrips.slice(0, 5); track trip.id) {
+            <app-trip-preview-card
+              [trip]="trip"
+              [showAuthor]="false"
+              vertical
+              [routerLink]="['/trip', trip.id]"
+            ></app-trip-preview-card>
+          }
+
+          <div class="actions">
+            @if (userTrips.length >= 5) {
+              <button
+                mat-fab
+                class="card-list-button"
+                routerLink="trips"
+                matTooltip="See all your trips"
+              >
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            } @else {
+              <button
+                mat-fab
+                class="card-list-button"
+                routerLink="/trip/create"
+                matTooltip="Create trip"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+            }
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-header">Favorites</h2>
+
+        <div class="card-list">
+          @for (trip of favoriteTrips; track trip.id) {
+            <app-trip-preview-card
+              [trip]="trip"
+              vertical
+              [routerLink]="['/trip', trip.id]"
+            ></app-trip-preview-card>
+          }
+
+          <div class="actions">
+            @if (favoriteTrips.length >= 5) {
+              <button
+                mat-fab
+                class="card-list-button"
+                routerLink="/favorites"
+                matTooltip="See all your favorites"
+              >
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            } @else {
+              <button
+                mat-fab
+                class="card-list-button"
+                routerLink="/"
+                matTooltip="Explore Trips"
+              >
+                <mat-icon>travel_explore</mat-icon>
+              </button>
+            }
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+}
