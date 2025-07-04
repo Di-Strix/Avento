@@ -32,9 +32,7 @@ export class HomeComponent {
       author: 'minkx',
       country: 'Kazakhstan',
       duration: '2',
-      hotelPrice: 100,
       totalPrice: 150,
-      ticketPrice: 50,
       imageUrl: 'countries/Kazakhstan.jpg',
     },
     {
@@ -42,9 +40,7 @@ export class HomeComponent {
       author: 'estonista',
       country: 'Estonia',
       duration: '2',
-      hotelPrice: 100,
       totalPrice: 175,
-      ticketPrice: 50,
       imageUrl: 'countries/Estonia.jpg',
     },
     {
@@ -52,9 +48,7 @@ export class HomeComponent {
       author: 'John',
       country: 'Brazil',
       duration: '2',
-      hotelPrice: 100,
       totalPrice: 300,
-      ticketPrice: 50,
       imageUrl: 'countries/Brazil.jpg',
     },
   ];
