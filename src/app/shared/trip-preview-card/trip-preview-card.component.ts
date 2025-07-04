@@ -19,6 +19,7 @@ import { TripPreview } from '../../shared/trip-preview';
 })
 export class TripPreviewCardComponent {
   @Input({ required: true }) trip!: TripPreview;
+  @Input() appearance: 'outlined' | 'raised' = 'raised';
 
   @Input()
   get vertical() {
