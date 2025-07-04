@@ -19,6 +19,12 @@ html {
   --mat-sys-corner-extra-small-top: 4px 4px 0 0;
   --mat-sys-corner-extra-small: 4px;
 
+  color-scheme: dark;
+
+  @media (prefers-color-scheme: light) {
+    color-scheme: light;
+  }
+
   @include mat.theme(
     (
       color: (
