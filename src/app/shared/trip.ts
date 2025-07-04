@@ -14,13 +14,13 @@ export namespace Trip {
   export namespace Directions {
     export interface Item {
       name: string;
-      image: string;
+      locationId: string;
     }
   }
 
   export interface Author {
-    id: string;
-    name: string;
+    username: string;
+    displayName: string;
   }
 
   export interface Info {

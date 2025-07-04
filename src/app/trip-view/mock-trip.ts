@@ -4,18 +4,17 @@ export const viennaAlmatyTrip: Trip = {
   directions: {
     from: {
       name: 'Vienna',
-      image:
-        'https://thumbor.apps.unitecms.io/unsafe/1600x900/https://wien-app.spoe.at/public/share/webpub/24499800daf7eb94948764f27bf1026d.jpg',
+      locationId: 'vie',
     },
     to: {
       name: 'Almaty',
-      image: 'https://media.digitalnomads.world/wp-content/uploads/2021/11/20114724/almaty-digital-nomads-1024x683.jpg',
+      locationId: 'vie',
     },
   },
   info: {
     author: {
-      id: '001',
-      name: 'minkx',
+      username: 'minkx',
+      displayName: 'minkx',
     },
     description:
       'Our trip to Almaty was amazing! We flew from Vienna with a stopover in Istanbul, and everything went smoothly. We stayed at City+3 Hotel, which was comfortable and family-friendly. The best part was visiting Kok-Tobe Hill—the cable car ride was so fun, and the views of the city were breathtaking. The kids especially enjoyed the mini-zoo. Highly recommend it for a family trip!',
@@ -51,8 +50,8 @@ export const viennaAlmatyTrip: Trip = {
           comment:
             'Hotel City+4 offers a comfortable and convenient stay with modern amenities, friendly staff, and a great location. Perfect for both business and leisure travelers!',
           reviewer: {
-            id: '002',
-            name: 'Mishanya3000',
+            username: 'mishanya3000',
+            displayName: 'Mishanya3000',
           },
           hotel: {
             id: '003',
@@ -68,8 +67,8 @@ export const viennaAlmatyTrip: Trip = {
           comment:
             'BestHotel exceeded all expectations with its impeccable service, luxurious accommodations, and prime location. A truly unforgettable experience—highly recommended!',
           reviewer: {
-            id: '003',
-            name: 'Kitty',
+            username: 'kitty',
+            displayName: 'Kitty',
           },
           hotel: {
             id: '004',
@@ -113,8 +112,8 @@ export const viennaAlmatyTrip: Trip = {
   comments: [
     {
       author: {
-        id: '002',
-        name: 'Wanderer ',
+        username: 'wanderer',
+        displayName: 'Wanderer',
       },
       title: 'Really enjoyed the trip!',
       content:
@@ -122,8 +121,8 @@ export const viennaAlmatyTrip: Trip = {
     },
     {
       author: {
-        id: '003',
-        name: 'Stranger ',
+        username: 'stranger',
+        displayName: 'Stranger',
       },
       title: 'Wow!',
       content:
@@ -131,8 +130,8 @@ export const viennaAlmatyTrip: Trip = {
     },
     {
       author: {
-        id: '004',
-        name: 'Stranger ',
+        username: 'stranger',
+        displayName: 'Stranger',
       },
       title: 'Meh',
       content:
