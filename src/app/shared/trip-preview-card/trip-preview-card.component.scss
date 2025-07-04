@@ -5,8 +5,7 @@ mat-card {
   flex-flow: row nowrap;
 
   max-width: 900px;
-  min-height: 190px;
-  max-height: 250px;
+  height: 250px;
 
   overflow: hidden;
   cursor: pointer;
@@ -20,6 +19,8 @@ mat-card {
     flex-flow: column nowrap;
     justify-content: space-between;
 
+    gap: 16px;
+
     .country {
       font: var(--mat-sys-headline-medium);
     }
@@ -28,25 +29,39 @@ mat-card {
       font: var(--mat-sys-title-medium);
       color: var(--mat-sys-secondary);
     }
+  }
 
-    .duration {
-      font: var(--mat-sys-title-medium);
-    }
+  .duration {
+    font: var(--mat-sys-title-medium);
+  }
 
-    .price {
-      font: var(--mat-sys-headline-medium);
-      color: var(--mat-sys-tertiary);
-    }
+  .price {
+    font: var(--mat-sys-headline-medium);
+    color: var(--mat-sys-tertiary);
   }
 
   .image {
     width: 55%;
+    overflow: hidden;
 
     img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
+    }
+  }
+
+  &.vertical {
+    width: 250px;
+    height: 320px;
+
+    flex-flow: column nowrap;
+
+    .image {
+      width: 100%;
+      order: -1;
     }
   }
 }

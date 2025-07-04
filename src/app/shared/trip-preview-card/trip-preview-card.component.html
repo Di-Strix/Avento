@@ -1,9 +1,14 @@
-<mat-card appearance="raised">
+<mat-card
+  appearance="raised"
+  [class.vertical]="vertical"
+>
   <div class="content">
-    <mat-card-header class="header">
+    <mat-card-header>
       <mat-card-title-group>
         <mat-card-title class="country"> {{ trip.country }} </mat-card-title>
-        <mat-card-subtitle class="author">by {{ trip.author }}</mat-card-subtitle>
+        @if (showAuthor) {
+          <mat-card-subtitle class="author">by {{ trip.author }}</mat-card-subtitle>
+        }
       </mat-card-title-group>
     </mat-card-header>
     <mat-card-content>

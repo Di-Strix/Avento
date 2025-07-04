@@ -1,3 +1,4 @@
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, Input } from '@angular/core';
 import {
   MatCard,
@@ -8,7 +9,7 @@ import {
   MatCardTitleGroup,
 } from '@angular/material/card';
 
-import { TripPreview } from '../trip-preview';
+import { TripPreview } from '../../shared/trip-preview';
 
 @Component({
   selector: 'app-trip-preview-card',
@@ -18,4 +19,15 @@ import { TripPreview } from '../trip-preview';
 })
 export class TripPreviewCardComponent {
   @Input({ required: true }) trip!: TripPreview;
+
+  @Input()
+  get vertical() {
+    return this._vertical;
+  }
+  set vertical(value: BooleanInput) {
+    this._vertical = coerceBooleanProperty(value);
+  }
+  private _vertical: boolean = false;
+
+  @Input() showAuthor: boolean = true;
 }
