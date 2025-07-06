@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use './theme-colors' as theme;
+@use './stepper.scss';
 
 html {
   --app-splash-screen-color: #2e67ca;
