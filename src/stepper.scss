@@ -3,6 +3,10 @@ ol.stepper {
 }
 
 ol.stepper > li {
+  --stepper-trace-offset: 4px;
+  --stepper-marker-size: 1.5em;
+  --stepper-item-margin: calc(24px + 4px * var(--mat-sys-density));
+
   counter-increment: item;
 
   position: relative;
@@ -11,13 +15,17 @@ ol.stepper > li {
   flex-direction: row;
   align-items: center;
 
-  height: 24px;
-  margin: calc(24px + 4px * var(--mat-sys-density));
+  margin: var(--stepper-item-margin);
+  margin-bottom: 0;
 
   font: var(--mat-sys-label-large);
 }
 
-ol.stepper > li:before {
+ol.stepper > li:first-of-type {
+  margin-top: 0;
+}
+
+ol.stepper > li > .stepper-marker::after {
   content: counter(item);
 
   display: flex;
@@ -27,8 +35,8 @@ ol.stepper > li:before {
 
   margin-right: calc(12px + 2px * var(--mat-sys-density));
 
-  width: 1.5em;
-  height: 1.5em;
+  width: var(--stepper-marker-size);
+  height: var(--stepper-marker-size);
 
   border-radius: var(--mat-sys-corner-full);
   background-color: var(--mat-sys-primary);
@@ -36,15 +44,24 @@ ol.stepper > li:before {
   font: var(--mat-sys-label-large);
 }
 
-ol.stepper > li:not(:last-of-type):after {
-  --step-margin: calc(24px + 4px * var(--mat-sys-density));
-
+ol.stepper > li:not(:first-of-type)::before {
   content: '';
   position: absolute;
 
   border-left: 1px solid var(--mat-sys-outline);
 
-  top: calc(24px + 4px + 1px * var(--mat-sys-density));
   left: calc(1.5em / 2);
-  bottom: calc(0px - var(--step-margin) + 4px + 1px * var(--mat-sys-density));
+  top: 0;
+  bottom: calc(50% + var(--stepper-marker-size) / 2 + var(--stepper-trace-offset));
+}
+
+ol.stepper > li:not(:last-of-type)::after {
+  content: '';
+  position: absolute;
+
+  border-left: 1px solid var(--mat-sys-outline);
+
+  left: calc(1.5em / 2);
+  top: calc(50% + var(--stepper-marker-size) / 2 + var(--stepper-trace-offset));
+  bottom: calc(0px - var(--stepper-item-margin));
 }
