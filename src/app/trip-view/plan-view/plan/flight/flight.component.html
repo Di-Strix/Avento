@@ -1,7 +1,9 @@
-Fly to {{ plan.to }}
-@if (plan.connections.length > 2) {
-  via {{ plan.connections.length - 2 }} stopover:
-}
+<p>
+  Fly to {{ plan.to }}
+  @if (plan.connections.length > 2) {
+    via {{ plan.connections.length - 2 }} stopover:
+  }
+</p>
 
 <ol class="stepper">
   @for (connection of plan.connections; track $index) {
