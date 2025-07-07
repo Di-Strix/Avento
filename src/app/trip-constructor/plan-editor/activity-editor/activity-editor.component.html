@@ -1,0 +1,17 @@
+@switch (control.getRawValue().type) {
+  @case ('flight') {
+    <app-flight-editor [groupControl]="control"></app-flight-editor>
+  }
+  @case ('stay') {
+    <app-stay-editor
+      [groupControl]="control"
+      [cityId]="cityId"
+    ></app-stay-editor>
+  }
+  @case ('attraction') {
+    <app-attraction-editor
+      [groupControl]="control"
+      [cityId]="cityId"
+    ></app-attraction-editor>
+  }
+}
