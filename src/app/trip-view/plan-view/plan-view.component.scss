@@ -1,3 +1,13 @@
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.expansion-overrides(
+    (
+      container-background-color: var(--mat-sys-surface-container-low),
+    )
+  );
+}
+
 .accordion-header {
   &-prefix {
     display: flex;
