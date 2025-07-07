@@ -10,6 +10,9 @@ export type TripForm_v = {
 export namespace TripForm {
   export type Info = ToForm<Info_v>;
   export type Info_v = {
+    caption: string;
+    duration: number;
+    price: number;
     description: string;
   };
 

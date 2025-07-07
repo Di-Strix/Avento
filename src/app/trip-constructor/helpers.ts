@@ -11,8 +11,25 @@ import { TripForm } from './trip-form';
 
 const appId = () => new FormControl(v4(), { nonNullable: true });
 
-export const createInfo = (comment: string = ''): TripForm.Info =>
+export const createInfo = (
+  caption: string = '',
+  duration: number = 3,
+  price: number = 800,
+  comment: string = ''
+): TripForm.Info =>
   new FormGroup({
+    caption: new FormControl(caption, {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(5), Validators.maxLength(20)],
+    }),
+    duration: new FormControl(duration, {
+      nonNullable: true,
+      validators: [Validators.required, Validators.min(1), Validators.max(90)],
+    }),
+    price: new FormControl(price, {
+      nonNullable: true,
+      validators: [Validators.required, Validators.min(0)],
+    }),
     description: new FormControl(comment, { nonNullable: true }),
   });
 
