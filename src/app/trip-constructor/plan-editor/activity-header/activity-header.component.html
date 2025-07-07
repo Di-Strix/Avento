@@ -2,7 +2,7 @@
   <mat-icon class="error-marker">error</mat-icon>
 }
 
-@switch (control.getRawValue().type) {
+@switch (control.controls.type.getRawValue()) {
   @case ('flight') {
     @let directions = parseFromTo(control);
 
