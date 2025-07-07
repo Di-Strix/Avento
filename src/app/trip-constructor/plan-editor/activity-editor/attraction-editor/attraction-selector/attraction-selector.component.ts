@@ -41,8 +41,10 @@ export class AttractionSelectorComponent {
 
   @Input() set disabled(state: BooleanInput) {
     const disabled = coerceBooleanProperty(state);
-    if (disabled) this.control.disable({ emitEvent: false });
-    else this.control.enable({ emitEvent: false });
+    setTimeout(() => {
+      if (disabled) this.control.disable({ emitEvent: false });
+      else this.control.enable({ emitEvent: false });
+    }, 0);
   }
 
   _disabled: boolean = false;
