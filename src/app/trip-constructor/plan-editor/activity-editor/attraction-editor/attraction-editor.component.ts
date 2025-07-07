@@ -15,9 +15,9 @@ import { AttractionSelectorComponent } from './attraction-selector/attraction-se
 })
 export class AttractionEditorComponent {
   @Input({ required: true }) set groupControl(group: TripForm.Plan.Item) {
-    if (group.controls.type.value !== 'attraction') {
+    if (group.controls.type.getRawValue() !== 'attraction') {
       throw new Error(
-        `FlightEditorComponent expects GroupControl of type 'flight' (TripForm.Plan.Flight), got type '${group.controls.type.value}' instead`
+        `FlightEditorComponent expects GroupControl of type 'flight' (TripForm.Plan.Flight), got type '${group.controls.type.getRawValue()}' instead`
       );
     }
 
