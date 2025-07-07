@@ -11,6 +11,6 @@ export class AirportNamePipe implements PipeTransform {
   constructor(private airportService: AirportService) {}
 
   transform(id: string): Observable<string | null> {
-    return this.airportService.getAirport(id).pipe(map((response) => response && response.displayName));
+    return this.airportService.get(id).pipe(map((response) => response && response.displayName));
   }
 }

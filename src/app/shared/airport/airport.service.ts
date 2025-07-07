@@ -12,7 +12,7 @@ import { airports } from './airports';
 export class AirportService {
   constructor() {}
 
-  queryAirports(searchString: string): Observable<Trip.Plan.Flight.Entity[]> {
+  query(searchString: string): Observable<Trip.Plan.Flight.Entity[]> {
     const query = searchString.trim().toLowerCase();
 
     let options = Object.entries(airports).map(([_, airport]) => airport);
@@ -24,7 +24,7 @@ export class AirportService {
     return of(items);
   }
 
-  getAirport(id: string): Observable<Trip.Plan.Flight.Entity | null> {
+  get(id: string): Observable<Trip.Plan.Flight.Entity | null> {
     return of(id in airports ? airports[id] : null);
   }
 }
