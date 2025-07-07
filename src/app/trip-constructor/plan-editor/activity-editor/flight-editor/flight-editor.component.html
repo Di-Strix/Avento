@@ -1,0 +1,37 @@
+<ol class="stepper">
+  @let controls = control.controls.connections.controls;
+  @for (control of controls; track control.controls._appId.value; let index = $index) {
+    <li>
+      <span class="stepper-marker"></span>
+      <div class="content-container">
+        @if (index < controls.length - 1) {
+          <div class="add-button-container">
+            <button
+              mat-raised-button
+              class="add-button"
+              (click)="insertStopover(index + 1)"
+            >
+              <mat-icon>add</mat-icon>
+              Stopover
+            </button>
+          </div>
+        }
+
+        <app-airport-selector
+          class="selector"
+          [control]="control.controls.value"
+        ></app-airport-selector>
+      </div>
+
+      @if (index > 0 && index < controls.length - 1) {
+        <button
+          mat-icon-button
+          class="delete-button"
+          (click)="deleteStopover(index)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      }
+    </li>
+  }
+</ol>

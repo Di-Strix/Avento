@@ -1,0 +1,46 @@
+@use '@angular/material' as mat;
+
+.content-container {
+  position: relative;
+
+  max-width: 350px;
+  width: 100%;
+}
+
+.add-button-container {
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  transform: translate(0, calc(50% + var(--stepper-item-margin) / 2));
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: opacity 0.125s linear;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @include mat.button-overrides(
+    (
+      protected-container-height: 30px,
+      protected-touch-target-display: none,
+    )
+  );
+}
+
+.delete-button {
+  margin-left: 8px;
+
+  &:hover {
+    @include mat.icon-button-overrides(
+      (
+        icon-color: var(--mat-sys-error),
+      )
+    );
+  }
+}

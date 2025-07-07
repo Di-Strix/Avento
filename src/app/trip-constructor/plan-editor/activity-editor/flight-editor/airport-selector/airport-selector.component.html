@@ -1,0 +1,34 @@
+<mat-form-field
+  subscriptSizing="dynamic"
+  class="form-field"
+  appearance="outline"
+>
+  <mat-label>Airport</mat-label>
+  <input
+    #selector
+    matInput
+    type="text"
+    spellcheck="false"
+    [formControl]="control"
+    [matAutocomplete]="auto"
+    (input)="filter()"
+    (focus)="filter()"
+  />
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    requireSelection
+    autoActiveFirstOption
+    [displayWith]="displayFn"
+  >
+    @for (option of filteredOptions | async; track option.id) {
+      <mat-option [value]="option.id">{{ option.displayName }}</mat-option>
+    }
+  </mat-autocomplete>
+  <button
+    mat-icon-button
+    matIconSuffix
+    (click)="control.setValue('')"
+  >
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-form-field>
