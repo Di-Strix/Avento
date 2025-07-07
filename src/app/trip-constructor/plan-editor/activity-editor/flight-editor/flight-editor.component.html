@@ -1,6 +1,6 @@
 <ol class="stepper">
   @let controls = control.controls.connections.controls;
-  @for (control of controls; track control.controls._appId.value; let index = $index) {
+  @for (control of controls; track control.controls._appId.getRawValue(); let index = $index) {
     <li>
       <span class="stepper-marker"></span>
       <div class="content-container">
