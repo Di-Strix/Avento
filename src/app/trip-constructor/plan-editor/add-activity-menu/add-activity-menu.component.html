@@ -1,0 +1,21 @@
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="menu"
+  (click)="$event.stopImmediatePropagation()"
+>
+  <mat-icon>add</mat-icon>
+</button>
+
+<mat-menu #menu>
+  @for (item of entries; track item.value) {
+    <button
+      mat-menu-item
+      (click)="create.emit(item.value)"
+    >
+      @if (item.icon) {
+        <mat-icon>{{ item.icon }}</mat-icon>
+      }
+      {{ item.displayName }}
+    </button>
+  }
+</mat-menu>
