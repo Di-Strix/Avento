@@ -15,8 +15,8 @@
     (input)="filter()"
     (focus)="filter()"
   />
-  @if (control.hasError('required')) {
-    <mat-error>This field is required</mat-error>
+  @if (control.hasError('location') && !auto.isOpen) {
+    <mat-error>The Selected Stay is not available in this location</mat-error>
   }
 
   <mat-autocomplete
