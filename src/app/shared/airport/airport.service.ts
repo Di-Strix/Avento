@@ -27,4 +27,8 @@ export class AirportService {
   get(id: string): Observable<Trip.Plan.Flight.Entity | null> {
     return of(id in airports ? airports[id] : null);
   }
+
+  getSync(id: string): Trip.Plan.Flight.Entity | null {
+    return id in airports ? airports[id] : null;
+  }
 }
