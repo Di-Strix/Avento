@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormField, MatInputModule } from '@angular/material/input';
-
-import { v4 } from 'uuid';
 
 import { AuthService } from '../shared/auth/auth.service';
 import { HeaderComponent } from '../shared/header/header.component';
