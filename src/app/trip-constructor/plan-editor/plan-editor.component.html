@@ -6,7 +6,7 @@
 >
   @let cityIds = cityIds$ | async;
   @for (control of formArray.controls; track control.controls._appId.value; let index = $index) {
-    @let edgeItem = index === 0 || index >= formArray.controls.length - 1;
+    @let edgeItem = index === 0 || index >= formArray.length - 1;
     @let cityId = cityIds?.[index];
 
     <mat-expansion-panel
