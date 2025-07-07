@@ -28,7 +28,8 @@
   <button
     mat-icon-button
     matIconSuffix
-    (click)="control.setValue('')"
+    (click)="selector.value = ''"
+    [disabled]="control.disabled"
   >
     <mat-icon>clear</mat-icon>
   </button>
