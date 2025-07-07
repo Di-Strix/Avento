@@ -1,67 +1,76 @@
-import { FormArray, FormControl, FormGroup, FormRecord } from '@angular/forms';
-
+import { ToForm } from '../shared/to-form';
 import { Trip } from '../shared/trip';
 
-export type TripForm = FormGroup<{
-  info: TripForm.Info;
-  plan: TripForm.Plan;
-}>;
+export type TripForm = ToForm<TripForm_v>;
+export type TripForm_v = {
+  info: TripForm.Info_v;
+  plan: TripForm.Plan_v;
+};
 
 export namespace TripForm {
-  export type Info = FormGroup<{
-    description: FormControl<string>;
-  }>;
+  export type Info = ToForm<Info_v>;
+  export type Info_v = {
+    description: string;
+  };
 
-  export type Plan = FormArray<TripForm.Plan.Item>;
+  export type Plan = ToForm<Plan_v>;
+  export type Plan_v = TripForm.Plan.Item_v[];
 
   export namespace Plan {
-    export interface GenericItem {
-      _appId: FormControl<string>;
-      type: FormControl<Trip.Plan.Item['type']>;
+    export type GenericItem = ToForm<GenericItem_v>;
+    export interface GenericItem_v {
+      _appId: string;
+      type: Trip.Plan.Item['type'];
     }
 
-    export type Flight = FormGroup<
-      GenericItem & {
-        type: FormControl<'flight'>;
-        connections: FormArray<Flight.ConnectionItem>;
-      }
-    >;
+    export type Flight = ToForm<Flight_v>;
+    export type Flight_v = GenericItem_v & {
+      type: 'flight';
+      connections: Flight.ConnectionItem_v[];
+    };
 
     export namespace Flight {
-      export type Entity = FormControl<string>;
+      export type Entity = ToForm<Entity_v>;
+      export type Entity_v = string;
 
-      export type ConnectionItem = FormGroup<{
-        _appId: FormControl<string>;
-        value: Entity;
-      }>;
+      export type ConnectionItem = ToForm<ConnectionItem_v>;
+      export type ConnectionItem_v = {
+        _appId: string;
+        value: Entity_v;
+      };
     }
 
-    export type Stay = FormGroup<
-      GenericItem & {
-        type: FormControl<'stay'>;
-        comment: Stay.Comment;
-        hotel: Stay.Entity;
-      }
-    >;
+    export type Stay = ToForm<Stay_v>;
+    export type Stay_v = GenericItem_v & {
+      type: 'stay';
+      comment: Stay.Comment_v;
+      hotel: Stay.Entity_v;
+    };
 
     export namespace Stay {
-      export type Comment = FormControl<string>;
-      export type Entity = FormControl<string>;
+      export type Comment = ToForm<Comment_v>;
+      export type Comment_v = string;
+
+      export type Entity = ToForm<string>;
+      export type Entity_v = string;
     }
 
-    export type Attraction = FormGroup<
-      GenericItem & {
-        type: FormControl<'attraction'>;
-        comment: Attraction.Comment;
-        attraction: Attraction.Entity;
-      }
-    >;
+    export type Attraction = ToForm<Attraction_v>;
+    export type Attraction_v = GenericItem_v & {
+      type: 'attraction';
+      comment: Attraction.Comment_v;
+      attraction: Attraction.Entity_v;
+    };
 
     export namespace Attraction {
-      export type Comment = FormControl<string>;
-      export type Entity = FormControl<string>;
+      export type Comment = ToForm<string>;
+      export type Comment_v = string;
+
+      export type Entity = ToForm<string>;
+      export type Entity_v = string;
     }
 
-    export type Item = Flight | Stay | Attraction;
+    export type Item = ToForm<Item_v>;
+    export type Item_v = Flight_v | Stay_v | Attraction_v;
   }
 }
