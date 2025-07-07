@@ -11,7 +11,6 @@ import { MatInputModule } from '@angular/material/input';
 import { Observable, Subject, delay, startWith, switchMap } from 'rxjs';
 
 import { AirportService } from '../../../../../shared/airport/airport.service';
-import { airports } from '../../../../../shared/airport/airports';
 import { Trip } from '../../../../../shared/trip';
 import { TripForm } from '../../../../trip-form';
 
