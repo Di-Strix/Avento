@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 :host {
   display: block;
   background-color: var(--mat-sys-surface-container-low);
@@ -13,6 +15,12 @@ main {
 
 main > .section {
   margin-top: var(--main-spacing);
+
+  @include mat.card-overrides(
+    (
+      outlined-container-color: var(--mat-sys-surface-container-lowest),
+    )
+  );
 }
 
 mat-card-header {
