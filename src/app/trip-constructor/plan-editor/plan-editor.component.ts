@@ -10,7 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { Observable, distinctUntilChanged, map, shareReplay, startWith } from 'rxjs';
 
 import { Trip } from '../../shared/trip';
-import { createAttraction, createFlight, createStay } from '../helpers';
+import { createAttraction, createFlight, createStay, getCityIds } from '../helpers';
 import { TripForm } from '../trip-form';
 
 import { ActivityEditorComponent } from './activity-editor/activity-editor.component';
@@ -49,17 +49,7 @@ export class PlanEditorComponent {
     this.cityIds$ = form.valueChanges.pipe(
       startWith(null),
       map(() => this.formArray.getRawValue()),
-      map((values) => {
-        let currentCityId: string | undefined = undefined;
-
-        return values.map((item) => {
-          if (item.type !== 'flight') return currentCityId;
-          if (item.connections.length < 2) return currentCityId;
-
-          currentCityId = item.connections.at(-1)?.value || undefined;
-          return currentCityId;
-        });
-      }),
+      map((values) => getCityIds(values)),
       distinctUntilChanged((prev, current) => prev.join() === current.join()),
       shareReplay(1)
     );
