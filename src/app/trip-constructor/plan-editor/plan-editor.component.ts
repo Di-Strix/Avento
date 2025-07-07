@@ -42,6 +42,7 @@ export class PlanEditorComponent {
     { value: 'attraction', icon: 'explore', displayName: 'Attraction' },
   ];
 
+  private _formArray!: FormArray<TripForm.Plan.Item>;
   @Input({ required: true }) set formArray(form: FormArray<TripForm.Plan.Item>) {
     this._formArray = form;
 
@@ -66,8 +67,6 @@ export class PlanEditorComponent {
   get formArray() {
     return this._formArray;
   }
-
-  private _formArray!: FormArray<TripForm.Plan.Item>;
 
   cityIds$!: Observable<Array<string | undefined>>;
 
