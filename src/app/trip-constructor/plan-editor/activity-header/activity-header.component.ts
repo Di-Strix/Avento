@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AirportNamePipe } from '../../../shared/airport/airport-name.pipe';
 import { AttractionNamePipe } from '../../../shared/attraction/attraction-name.pipe';
@@ -18,7 +17,7 @@ export class ActivityHeaderComponent {
   @Input({ required: true }) control!: TripForm.Plan.Item;
 
   parseFromTo(control: TripForm.Plan.Item) {
-    const value = control.value;
+    const value = control.getRawValue();
 
     if (value.type !== 'flight') return { from: '', to: '' };
 
@@ -29,14 +28,14 @@ export class ActivityHeaderComponent {
   }
 
   parseStayId(control: TripForm.Plan.Item): string {
-    const value = control.value;
+    const value = control.getRawValue();
     if (value.type !== 'stay') return '';
 
     return value.hotel || '';
   }
 
   parseAttractionId(control: TripForm.Plan.Item): string {
-    const value = control.value;
+    const value = control.getRawValue();
     if (value.type !== 'attraction') return '';
 
     return value.attraction || '';
