@@ -28,9 +28,9 @@
       @let from = trip.directions.from;
       @let to = trip.directions.to;
       <mat-icon>flight_takeoff</mat-icon>
-      {{ from.name }}
+      {{ from.displayName }}
       <mat-icon> arrow_forward </mat-icon>
-      {{ to.name }}
+      {{ to.displayName }}
       <mat-icon>flight_land</mat-icon>
     </div>
   </app-header>
@@ -46,8 +46,8 @@
           Author:
           <a
             class="link"
-            [routerLink]="['/user', trip.info.author.id]"
-            >{{ trip.info.author.name }}</a
+            [routerLink]="['/user', trip.info.author.username]"
+            >{{ trip.info.author.displayName }}</a
           >
         </mat-card-subtitle>
       </mat-card-header>
@@ -87,9 +87,9 @@
                 <i>
                   <a
                     class="link"
-                    [routerLink]="['/user', comment.author.id]"
+                    [routerLink]="['/user', comment.author.username]"
                   >
-                    {{ comment.author.name }}
+                    {{ comment.author.displayName }}
                   </a>
                   writes:
                 </i>

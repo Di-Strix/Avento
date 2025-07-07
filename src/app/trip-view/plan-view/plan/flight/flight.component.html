@@ -7,7 +7,7 @@ Fly to {{ plan.to }}
   @for (connection of plan.connections; track $index) {
     <li>
       <span class="stepper-marker"></span>
-      {{ connection.name }}
+      {{ connection.displayName }}
     </li>
   }
 </ol>

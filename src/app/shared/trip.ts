@@ -13,8 +13,8 @@ export namespace Trip {
 
   export namespace Directions {
     export interface Item {
-      name: string;
-      locationId: string;
+      displayName: string;
+      cityId: string;
     }
   }
 
@@ -35,7 +35,9 @@ export namespace Trip {
 
     export namespace Flight {
       export interface Entity {
-        name: string;
+        displayName: string;
+        cityId: string;
+        id: string;
       }
     }
 
@@ -49,7 +51,8 @@ export namespace Trip {
     export namespace Stay {
       export interface Entity {
         id: string;
-        name: string;
+        cityId: string;
+        displayName: string;
         website: string;
         rating: number;
         photos: string[];
@@ -69,7 +72,8 @@ export namespace Trip {
     export namespace Attraction {
       export interface Entity {
         id: string;
-        name: string;
+        cityId: string;
+        displayName: string;
         website: string;
         rating: number;
         photos: string[];

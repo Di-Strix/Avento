@@ -3,12 +3,12 @@ import { Trip } from '../shared/trip';
 export const viennaAlmatyTrip: Trip = {
   directions: {
     from: {
-      name: 'Vienna',
-      locationId: 'vie',
+      cityId: '3',
+      displayName: 'Vienna',
     },
     to: {
-      name: 'Almaty',
-      locationId: 'vie',
+      cityId: '1',
+      displayName: 'Almaty',
     },
   },
   info: {
@@ -25,9 +25,9 @@ export const viennaAlmatyTrip: Trip = {
       from: 'Vienna',
       to: 'Almaty',
       connections: [
-        { name: 'Vienna International Airport (VIE)' },
-        { name: 'Istanbul Airport (IST)' },
-        { name: 'Almaty International Airport (ALA)' },
+        { id: '3', cityId: '3', displayName: 'Vienna International Airport (VIE)' },
+        { id: '2', cityId: '2', displayName: 'Istanbul Airport (IST)' },
+        { id: '1', cityId: '1', displayName: 'Almaty International Airport (ALA)' },
       ],
     },
     {
@@ -35,7 +35,8 @@ export const viennaAlmatyTrip: Trip = {
       comment: "I recommend booking a room in this hotel. It's both cheap and good!",
       hotel: {
         id: '002',
-        name: 'City+3',
+        cityId: '1',
+        displayName: 'City+3',
         website: 'https://example.com',
         rating: 4,
         photos: [
@@ -55,7 +56,8 @@ export const viennaAlmatyTrip: Trip = {
           },
           hotel: {
             id: '003',
-            name: 'City+4',
+            cityId: '1',
+            displayName: 'City+4',
             website: 'https://example.com',
             rating: 4,
             photos: [
@@ -72,7 +74,8 @@ export const viennaAlmatyTrip: Trip = {
           },
           hotel: {
             id: '004',
-            name: 'BestHotel',
+            cityId: '1',
+            displayName: 'BestHotel',
             website: 'https://example.com',
             rating: 4,
             photos: [
@@ -88,7 +91,8 @@ export const viennaAlmatyTrip: Trip = {
         'Kok-Tobe Hill was a great family outing! The views were amazing, the kids loved the mini-zoo, and the cable car ride was fun. A nice, relaxing spot for everyone to enjoy.',
       attraction: {
         id: '001',
-        name: 'Kok-Tobe Hill',
+        cityId: '1',
+        displayName: 'Kok-Tobe Hill',
         website: 'https://example.com/',
         rating: 4,
         photos: [
@@ -102,9 +106,9 @@ export const viennaAlmatyTrip: Trip = {
       from: 'Almaty',
       to: 'Vienna',
       connections: [
-        { name: 'Almaty International Airport (ALA)' },
-        { name: 'Istanbul Airport (IST)' },
-        { name: 'Vienna International Airport (VIE)' },
+        { id: '1', cityId: '1', displayName: 'Almaty International Airport (ALA)' },
+        { id: '2', cityId: '2', displayName: 'Istanbul Airport (IST)' },
+        { id: '3', cityId: '3', displayName: 'Vienna International Airport (VIE)' },
       ],
     },
   ],

@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { Airport, airports } from './airports';
+import { Trip } from '../trip';
+
+import { airports } from './airports';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +12,7 @@ import { Airport, airports } from './airports';
 export class AirportService {
   constructor() {}
 
-  queryAirports(searchString: string): Observable<Airport[]> {
+  queryAirports(searchString: string): Observable<Trip.Plan.Flight.Entity[]> {
     const query = searchString.trim().toLowerCase();
 
     let options = Object.entries(airports).map(([_, airport]) => airport);
@@ -22,7 +24,7 @@ export class AirportService {
     return of(items);
   }
 
-  getAirport(id: string): Observable<Airport | null> {
+  getAirport(id: string): Observable<Trip.Plan.Flight.Entity | null> {
     return of(id in airports ? airports[id] : null);
   }
 }

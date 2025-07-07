@@ -6,7 +6,7 @@
 <section class="sub-section">
   <h3 class="sub-section-header">Overview:</h3>
   <ul>
-    <li><b>Name:</b> {{ plan.hotel.name }}</li>
+    <li><b>Name:</b> {{ plan.hotel.displayName }}</li>
     <li>
       <b>Website: </b>
       <a
@@ -47,7 +47,10 @@
     <h3 class="sub-section-header">Alternatives</h3>
     <div class="alternatives-container">
       @for (alternative of plan.alternatives; track $index) {
-        <mat-card class="alternative-card">
+        <mat-card
+          class="alternative-card"
+          appearance="outlined"
+        >
           <mat-card-header>
             <div mat-card-avatar>
               <!-- <img
@@ -61,9 +64,9 @@
             <mat-card-title>
               <a
                 class="link"
-                [routerLink]="['/user', alternative.reviewer.id]"
+                [routerLink]="['/user', alternative.reviewer.username]"
               >
-                {{ alternative.reviewer.name }}
+                {{ alternative.reviewer.displayName }}
               </a>
             </mat-card-title>
             <mat-card-subtitle>Avento user</mat-card-subtitle>
@@ -75,7 +78,7 @@
 
           <mat-card-content>
             <p>
-              <b> {{ alternative.hotel.name }} </b>
+              <b> {{ alternative.hotel.displayName }} </b>
               <br />
               {{ alternative.comment }}
             </p>
