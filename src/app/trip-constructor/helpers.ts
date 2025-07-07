@@ -48,3 +48,15 @@ export const createPlan = (
 
 export const createTripForm = (info: TripForm.Info = createInfo(), plan: TripForm.Plan = createPlan()): TripForm =>
   new FormGroup({ info, plan });
+
+export const getCityIds = (plan: TripForm.Plan.Item_v[]) => {
+  let currentCityId: string | undefined = undefined;
+
+  return plan.map((item) => {
+    if (item.type !== 'flight') return currentCityId;
+    if (item.connections.length < 2) return currentCityId;
+
+    currentCityId = item.connections.at(-1)?.value || undefined;
+    return currentCityId;
+  });
+};
