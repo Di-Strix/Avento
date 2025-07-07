@@ -15,9 +15,9 @@ import { StaySelectorComponent } from './stay-selector/stay-selector.component';
 })
 export class StayEditorComponent {
   @Input({ required: true }) set groupControl(group: TripForm.Plan.Item) {
-    if (group.controls.type.value !== 'stay') {
+    if (group.controls.type.getRawValue() !== 'stay') {
       throw new Error(
-        `FlightEditorComponent expects GroupControl of type 'flight' (TripForm.Plan.Flight), got type '${group.controls.type.value}' instead`
+        `FlightEditorComponent expects GroupControl of type 'flight' (TripForm.Plan.Flight), got type '${group.controls.type.getRawValue()}' instead`
       );
     }
 
