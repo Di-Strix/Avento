@@ -1,7 +1,9 @@
+import { inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { v4 } from 'uuid';
 
+import { ActivityValidator } from './activity.validator';
 import { TripForm } from './trip-form';
 
 const appId = () => new FormControl(v4(), { nonNullable: true });
@@ -26,21 +28,37 @@ export const createFlight = (
     connections: new FormArray(connections),
   });
 
-export const createAttraction = (attractionId: string = '', comment: string = ''): TripForm.Plan.Attraction =>
-  new FormGroup({
+export const createAttraction = (attractionId: string = '', comment: string = ''): TripForm.Plan.Attraction => {
+  const activityValidator = inject(ActivityValidator);
+
+  return new FormGroup({
     _appId: appId(),
     type: new FormControl<'attraction'>('attraction', { nonNullable: true }),
-    attraction: new FormControl(attractionId, { nonNullable: true, validators: [Validators.required] }),
-    comment: new FormControl(comment, { nonNullable: true }),
+    attraction: new FormControl(attractionId, {
+      nonNullable: true,
+      validators: [Validators.required],
+      asyncValidators: [activityValidator.validate.bind(activityValidator)],
+    }),
+    comment: new FormControl(comment, {
+      nonNullable: true,
+    }),
   });
+};
 
-export const createStay = (stayId: string = '', comment: string = ''): TripForm.Plan.Stay =>
-  new FormGroup({
+export const createStay = (stayId: string = '', comment: string = ''): TripForm.Plan.Stay => {
+  const activityValidator = inject(ActivityValidator);
+
+  return new FormGroup({
     _appId: appId(),
     type: new FormControl<'stay'>('stay', { nonNullable: true }),
-    hotel: new FormControl(stayId, { nonNullable: true, validators: [Validators.required] }),
+    hotel: new FormControl(stayId, {
+      nonNullable: true,
+      validators: [Validators.required],
+      asyncValidators: [activityValidator.validate.bind(activityValidator)],
+    }),
     comment: new FormControl(comment, { nonNullable: true }),
   });
+};
 
 export const createPlan = (
   plan: TripForm.Plan.Item[] = [createFlight(), createStay(), createAttraction(), createFlight()]
