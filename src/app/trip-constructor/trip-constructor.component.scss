@@ -1,0 +1,40 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+  min-height: 100%;
+
+  background-color: var(--mat-sys-surface-container-low);
+}
+
+main {
+  --main-spacing: calc(20px + 3px * var(--mat-sys-density));
+
+  max-width: 1000px;
+  margin: 0 auto var(--main-spacing);
+  padding: 0 var(--main-spacing) var(--main-spacing);
+}
+
+main > .section {
+  margin-top: var(--main-spacing);
+
+  @include mat.card-overrides(
+    (
+      outlined-container-color: var(--mat-sys-surface-container-lowest),
+    )
+  );
+}
+
+mat-card-header {
+  margin-bottom: 8px;
+}
+
+.header-directions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.description-field {
+  width: 100%;
+}
