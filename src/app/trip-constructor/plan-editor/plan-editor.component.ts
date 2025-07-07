@@ -6,8 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 
-import { Observable, distinctUntilChanged, map, shareReplay, startWith, tap } from 'rxjs';
+import { Observable, distinctUntilChanged, map, shareReplay, startWith, switchMap, tap } from 'rxjs';
 
+import { AirportService } from '../../shared/airport/airport.service';
 import { Trip } from '../../shared/trip';
 import { createAttraction, createFlight, createStay, getCityIds } from '../helpers';
 import { TripForm } from '../trip-form';
@@ -48,7 +49,7 @@ export class PlanEditorComponent {
     this.cityIds$ = form.valueChanges.pipe(
       startWith(null),
       map(() => this.formArray.getRawValue()),
-      map((values) => getCityIds(values)),
+      switchMap((values) => getCityIds(values, this.airportService)),
       distinctUntilChanged((prev, current) => prev.join() === current.join()),
       tap(() => {
         this.formArray.controls.forEach((group) => {
@@ -74,7 +75,7 @@ export class PlanEditorComponent {
   cityIds$!: Observable<Array<string | undefined>>;
   activeStep: number = 0;
 
-  constructor() {
+  constructor(private airportService: AirportService) {
     this.dropPredicate = this.dropPredicate.bind(this);
   }
 

@@ -1,7 +1,10 @@
 import { inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { map, of, shareReplay, zip } from 'rxjs';
 import { v4 } from 'uuid';
+
+import { AirportService } from '../shared/airport/airport.service';
 
 import { ActivityValidator } from './activity.validator';
 import { TripForm } from './trip-form';
@@ -67,14 +70,23 @@ export const createPlan = (
 export const createTripForm = (info: TripForm.Info = createInfo(), plan: TripForm.Plan = createPlan()): TripForm =>
   new FormGroup({ info, plan });
 
-export const getCityIds = (plan: TripForm.Plan.Item_v[]) => {
-  let currentCityId: string | undefined = undefined;
+export const getCityIds = (plan: TripForm.Plan.Item_v[], airportService: AirportService) => {
+  let currentCityId$ = of<string | undefined>(undefined);
 
-  return plan.map((item) => {
-    if (item.type !== 'flight') return currentCityId;
-    if (item.connections.length < 2) return currentCityId;
+  const cityIds$ = plan.map((item) => {
+    if (item.type !== 'flight') return currentCityId$;
+    if (item.connections.length < 2) return currentCityId$;
 
-    currentCityId = item.connections.at(-1)?.value || undefined;
-    return currentCityId;
+    const airportId = item.connections.at(-1)?.value || undefined;
+    if (airportId) {
+      currentCityId$ = airportService.get(airportId).pipe(
+        map((airport) => (airport && airport.cityId) || undefined),
+        shareReplay(1)
+      );
+    } else currentCityId$ = of(undefined);
+
+    return currentCityId$;
   });
+
+  return zip(cityIds$);
 };

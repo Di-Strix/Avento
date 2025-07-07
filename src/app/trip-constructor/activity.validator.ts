@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { AbstractControl, AsyncValidator, FormArray, FormControl, FormGroup, ValidationErrors } from '@angular/forms';
 
-import { Observable, map, of } from 'rxjs';
+import { Observable, map, of, switchMap } from 'rxjs';
 
+import { AirportService } from '../shared/airport/airport.service';
 import { AttractionService } from '../shared/attraction/attraction.service';
 import { StayService } from '../shared/stay/stay.service';
 
@@ -15,6 +16,7 @@ type GenericItem = TripForm.Plan.GenericItem_v;
 export class ActivityValidator implements AsyncValidator {
   private readonly attractionService = inject(AttractionService);
   private readonly stayService = inject(StayService);
+  private readonly airportService = inject(AirportService);
 
   validate(control: AbstractControl): Observable<ValidationErrors | null> {
     if (!(control instanceof FormControl)) return of(null);
@@ -28,31 +30,33 @@ export class ActivityValidator implements AsyncValidator {
     if (!info) return of(null);
 
     const plan = planForm.getRawValue().filter((item) => isGenericItem(item)) as TripForm.Plan.Item_v[];
-    const cityIds = getCityIds(plan);
+    return getCityIds(plan, this.airportService).pipe(
+      switchMap((cityIds) => {
+        const formId = info.appId;
+        const formIndex = planForm.getRawValue().findIndex((item) => extractGenericInfo(item)?.appId === formId);
+        if (!formIndex) return of(null);
 
-    const formId = info.appId;
-    const formIndex = planForm.getRawValue().findIndex((item) => extractGenericInfo(item)?.appId === formId);
-    if (!formIndex) return of(null);
+        const itemCityId = cityIds[formIndex];
+        let stream: Observable<string | null> = of(null);
 
-    const itemCityId = cityIds[formIndex];
-    let stream: Observable<string | null> = of(null);
+        switch (info.type) {
+          case 'attraction':
+            const attractionId = control.getRawValue() as TripForm.Plan.Attraction.Entity_v;
+            stream = this.attractionService.get(attractionId).pipe(map((attraction) => attraction?.cityId || null));
+            break;
+          case 'stay':
+            const stayId = control.getRawValue() as TripForm.Plan.Stay.Entity_v;
+            stream = this.stayService.get(stayId).pipe(map((stay) => stay?.cityId || null));
+            break;
+        }
 
-    switch (info.type) {
-      case 'attraction':
-        const attractionId = control.getRawValue() as TripForm.Plan.Attraction.Entity_v;
-        stream = this.attractionService.get(attractionId).pipe(map((attraction) => attraction?.cityId || null));
-        break;
-      case 'stay':
-        const stayId = control.getRawValue() as TripForm.Plan.Stay.Entity_v;
-        stream = this.stayService.get(stayId).pipe(map((stay) => stay?.cityId || null));
-        break;
-    }
+        return stream.pipe(
+          map((cityId) => {
+            if (cityId && cityId !== itemCityId) return { location: true };
 
-    return stream.pipe(
-      map((cityId) => {
-        if (cityId && cityId !== itemCityId) return { location: true };
-
-        return null;
+            return null;
+          })
+        );
       })
     );
   }
