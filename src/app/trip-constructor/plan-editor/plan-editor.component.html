@@ -14,6 +14,8 @@
       cdkDrag
       cdkDragLockAxis="y"
       [cdkDragDisabled]="edgeItem"
+      [expanded]="activeStep === index"
+      (opened)="setActiveStep(index)"
     >
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -21,11 +23,13 @@
 
           <span class="spacer"></span>
 
-          <app-add-activity-menu
-            class="add-activity-menu"
-            [entries]="ACTIVITY_MENU_ENTRIES"
-            (create)="createActivity($event, index + 1)"
-          ></app-add-activity-menu>
+          @if (index < formArray.length - 1) {
+            <app-add-activity-menu
+              class="add-activity-menu"
+              [entries]="ACTIVITY_MENU_ENTRIES"
+              (create)="createActivity($event, index + 1)"
+            ></app-add-activity-menu>
+          }
           <mat-icon
             cdkDragHandle
             class="cdk-drag-handle"
@@ -42,7 +46,7 @@
       ></app-activity-editor>
 
       <mat-action-row>
-      @if (!edgeItem) {
+        @if (!edgeItem) {
           <button
             mat-button
             class="delete-button"
@@ -50,7 +54,22 @@
           >
             <mat-icon>delete</mat-icon>Remove
           </button>
-      }
+          <span class="spacer"></span>
+        }
+        <button
+          mat-button
+          (click)="setActiveStep(index - 1)"
+          [disabled]="index === 0"
+        >
+          Previous
+        </button>
+        <button
+          mat-button
+          (click)="setActiveStep(index + 1)"
+          [disabled]="index >= formArray.length - 1"
+        >
+          Next
+        </button>
       </mat-action-row>
     </mat-expansion-panel>
   }

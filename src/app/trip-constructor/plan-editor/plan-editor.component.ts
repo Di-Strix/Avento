@@ -69,9 +69,16 @@ export class PlanEditorComponent {
   }
 
   cityIds$!: Observable<Array<string | undefined>>;
+  activeStep: number = 0;
 
   constructor() {
     this.dropPredicate = this.dropPredicate.bind(this);
+  }
+
+  setActiveStep(index: number) {
+    if (index < 0 || index >= this.formArray.length) return;
+
+    this.activeStep = index;
   }
 
   createActivity(type: Trip.Plan.Item['type'], index: number) {
