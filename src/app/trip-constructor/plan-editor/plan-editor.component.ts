@@ -76,6 +76,8 @@ export class PlanEditorComponent {
   }
 
   createActivity(type: Trip.Plan.Item['type'], index: number) {
+    if (index <= 0 || index >= this.formArray.length - 1) return;
+
     let activity: TripForm.Plan.Item;
 
     switch (type) {
