@@ -1,0 +1,74 @@
+<div class="row">
+  <mat-form-field
+    appearance="outline"
+    class="caption-field"
+  >
+    <mat-label>Caption</mat-label>
+    <input
+      matInput
+      type="text"
+      [formControl]="form.controls.caption"
+    />
+    <mat-hint align="end">{{ form.controls.caption.getRawValue().length }}/20</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    @let durationForm = form.controls.duration;
+
+    <mat-label>Duration (days)</mat-label>
+    <input
+      matInput
+      type="number"
+      min="1"
+      max="90"
+      [formControl]="durationForm"
+    />
+
+    <mat-error>
+      @if (durationForm.touched || durationForm.dirty) {
+        @if (durationForm.hasError('min')) {
+          Trip is too short
+        }
+        @if (durationForm.hasError('max')) {
+          You sure you're coming back?
+        }
+      }
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    @let priceForm = form.controls.price;
+
+    <mat-label>Price</mat-label>
+    <input
+      matInput
+      type="number"
+      min="0"
+      [formControl]="priceForm"
+    />
+    <span matTextPrefix>&euro;&nbsp;</span>
+
+    <mat-error>
+      @if (priceForm.touched || priceForm.dirty) {
+        @if (priceForm.hasError('min')) {
+          If only life worked like that...
+        }
+        @if (durationForm.hasError('max')) {
+          You sure you're coming back?
+        }
+      }
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<mat-form-field
+  appearance="outline"
+  class="description-field"
+  subscriptSizing="dynamic"
+>
+  <mat-label>Description</mat-label>
+  <textarea
+    matInput
+    [formControl]="form.controls.description"
+    rows="5"
+  ></textarea>
+</mat-form-field>

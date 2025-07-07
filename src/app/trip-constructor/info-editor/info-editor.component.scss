@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+
+  .caption-field {
+    flex-shrink: 0;
+    flex-grow: 1;
+
+    max-width: 350px;
+  }
+}
+
+.description-field {
+  width: 100%;
+}
