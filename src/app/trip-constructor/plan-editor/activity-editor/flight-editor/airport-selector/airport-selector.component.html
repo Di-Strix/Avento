@@ -14,9 +14,6 @@
     (input)="filter()"
     (focus)="filter()"
   />
-  @if (control.hasError('required')) {
-    <mat-error>This field is required</mat-error>
-  }
 
   <mat-autocomplete
     #auto="matAutocomplete"
