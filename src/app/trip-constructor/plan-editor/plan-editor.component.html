@@ -5,7 +5,7 @@
   (cdkDropListDropped)="drop($event)"
 >
   @let cityIds = cityIds$ | async;
-  @for (control of formArray.controls; track control.controls._appId.value; let index = $index) {
+  @for (control of formArray.controls; track control.controls._appId.getRawValue(); let index = $index) {
     @let edgeItem = index === 0 || index >= formArray.length - 1;
     @let cityId = cityIds?.[index];
 
