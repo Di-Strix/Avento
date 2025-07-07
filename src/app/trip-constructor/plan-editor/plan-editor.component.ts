@@ -5,9 +5,8 @@ import { FormArray } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { Observable, distinctUntilChanged, map, shareReplay, startWith } from 'rxjs';
+import { Observable, distinctUntilChanged, map, shareReplay, startWith, tap } from 'rxjs';
 
 import { Trip } from '../../shared/trip';
 import { createAttraction, createFlight, createStay, getCityIds } from '../helpers';
@@ -51,6 +50,20 @@ export class PlanEditorComponent {
       map(() => this.formArray.getRawValue()),
       map((values) => getCityIds(values)),
       distinctUntilChanged((prev, current) => prev.join() === current.join()),
+      tap(() => {
+        this.formArray.controls.forEach((group) => {
+          switch (group.getRawValue().type) {
+            case 'attraction':
+              const attractionForm = group as TripForm.Plan.Attraction;
+              attractionForm.controls.attraction.updateValueAndValidity();
+              break;
+            case 'stay':
+              const stayForm = group as TripForm.Plan.Stay;
+              stayForm.controls.hotel.updateValueAndValidity();
+              break;
+          }
+        });
+      }),
       shareReplay(1)
     );
   }
