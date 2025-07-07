@@ -41,8 +41,8 @@
         [cityId]="cityId"
       ></app-activity-editor>
 
+      <mat-action-row>
       @if (!edgeItem) {
-        <div class="actions-container">
           <button
             mat-button
             class="delete-button"
@@ -50,8 +50,8 @@
           >
             <mat-icon>delete</mat-icon>Remove
           </button>
-        </div>
       }
+      </mat-action-row>
     </mat-expansion-panel>
   }
 </mat-accordion>
