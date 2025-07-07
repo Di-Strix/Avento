@@ -1,0 +1,73 @@
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.expansion-overrides(
+    (
+      container-background-color: var(--mat-sys-surface-container-low),
+    )
+  );
+}
+
+.cdk-drag-handle {
+  &:not(.disabled) {
+    cursor: grab;
+  }
+
+  &.disabled {
+    color: color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent);
+  }
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  background-color: red;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging {
+  pointer-events: none;
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.actions-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-top: 16px;
+
+  .delete-button {
+    @include mat.button-overrides(
+      (
+        text-label-text-color: var(--mat-sys-on-surface-variant),
+      )
+    );
+    &:hover {
+      @include mat.button-overrides(
+        (
+          text-label-text-color: var(--mat-sys-error),
+        )
+      );
+    }
+  }
+}
+
+.expansion-panel {
+  .add-activity-menu {
+    opacity: 0;
+    margin-right: 8px;
+  }
+
+  &:hover {
+    .add-activity-menu {
+      opacity: 1;
+    }
+  }
+}
