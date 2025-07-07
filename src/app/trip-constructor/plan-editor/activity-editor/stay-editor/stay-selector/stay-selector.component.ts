@@ -4,7 +4,9 @@ import { Component, DestroyRef, ElementRef, Input, ViewChild } from '@angular/co
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -24,6 +26,8 @@ import { TripForm } from '../../../../trip-form';
     FormsModule,
     ReactiveFormsModule,
     MatTooltipModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   templateUrl: './stay-selector.component.html',
   styleUrl: './stay-selector.component.scss',
