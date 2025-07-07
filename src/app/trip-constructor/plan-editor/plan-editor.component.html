@@ -9,8 +9,6 @@
     @let edgeItem = index === 0 || index >= formArray.controls.length - 1;
     @let cityId = cityIds?.[index];
 
-    <!-- @switch (control.controls.type.value) { -->
-    <!-- @case ('flight') { -->
     <mat-expansion-panel
       class="expansion-panel"
       cdkDrag
@@ -55,100 +53,5 @@
         </div>
       }
     </mat-expansion-panel>
-    <!-- } -->
-    <!-- @case ('stay') {
-        <mat-expansion-panel
-          class="expansion-panel"
-          cdkDrag
-          cdkDragLockAxis="y"
-        >
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <b class="accordion-header-prefix">
-                <mat-icon class="accordion-header-prefix-icon"> hotel </mat-icon>
-                Stay:
-              </b>
-              {{ parseStayId(control) | stayName | async }}
-
-              <span class="spacer"></span>
-
-              <app-add-activity-menu
-                class="add-activity-menu"
-                [entries]="ACTIVITY_MENU_ENTRIES"
-                (create)="createActivity($event, index + 1)"
-              ></app-add-activity-menu>
-              <mat-icon
-                cdkDragHandle
-                class="cdk-drag-handle"
-              >
-                drag_handle
-              </mat-icon>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-
-          <app-stay-editor
-            [groupControl]="control"
-            [cityId]="cityId"
-          ></app-stay-editor>
-
-          <div class="actions-container">
-            <button
-              mat-button
-              class="delete-button"
-              (click)="removeActivity(index)"
-            >
-              <mat-icon>delete</mat-icon>Remove
-            </button>
-          </div>
-        </mat-expansion-panel>
-      }
-
-      @case ('attraction') {
-        <mat-expansion-panel
-          class="expansion-panel"
-          cdkDrag
-          cdkDragLockAxis="y"
-        >
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <b class="accordion-header-prefix">
-                <mat-icon class="accordion-header-prefix-icon"> explore </mat-icon>
-                Visit:
-              </b>
-              {{ parseAttractionId(control) | attractionName | async }}
-
-              <span class="spacer"></span>
-
-              <app-add-activity-menu
-                class="add-activity-menu"
-                [entries]="ACTIVITY_MENU_ENTRIES"
-                (create)="createActivity($event, index + 1)"
-              ></app-add-activity-menu>
-              <mat-icon
-                cdkDragHandle
-                class="cdk-drag-handle"
-              >
-                drag_handle
-              </mat-icon>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-
-          <app-attraction-editor
-            [groupControl]="control"
-            [cityId]="cityId"
-          ></app-attraction-editor>
-
-          <div class="actions-container">
-            <button
-              mat-button
-              class="delete-button"
-              (click)="removeActivity(index)"
-            >
-              <mat-icon>delete</mat-icon>Remove
-            </button>
-          </div>
-        </mat-expansion-panel>
-      }
-    } -->
   }
 </mat-accordion>
