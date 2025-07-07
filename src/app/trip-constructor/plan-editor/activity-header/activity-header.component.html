@@ -1,0 +1,36 @@
+@if (control.touched && control.invalid) {
+  <mat-icon class="error-marker">error</mat-icon>
+}
+
+@switch (control.getRawValue().type) {
+  @case ('flight') {
+    @let directions = parseFromTo(control);
+
+    <b class="header-prefix">
+      <mat-icon class="header-prefix-icon"> airlines </mat-icon>
+      Flight:
+    </b>
+
+    @if (directions.from && directions.to) {
+      {{ directions.from | airportName | async }}
+      <mat-icon class="header-arrow-forward"> arrow_forward </mat-icon>
+      {{ directions.to | airportName | async }}
+    }
+  }
+
+  @case ('stay') {
+    <b class="header-prefix">
+      <mat-icon class="header-prefix-icon"> hotel </mat-icon>
+      Stay:
+    </b>
+    {{ parseStayId(control) | stayName | async }}
+  }
+
+  @case ('attraction') {
+    <b class="header-prefix">
+      <mat-icon class="header-prefix-icon"> explore </mat-icon>
+      Visit:
+    </b>
+    {{ parseAttractionId(control) | attractionName | async }}
+  }
+}
