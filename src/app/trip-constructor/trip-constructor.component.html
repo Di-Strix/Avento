@@ -6,7 +6,6 @@
     appearance="outlined"
     class="section"
   >
-    @let infoGroup = tripForm.controls.info;
     <mat-card-header>
       <mat-card-title> Trip details </mat-card-title>
       <mat-card-subtitle>
@@ -17,20 +16,7 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>
-        <mat-form-field
-          appearance="outline"
-          class="description-field"
-          subscriptSizing="dynamic"
-        >
-          <mat-label>Description</mat-label>
-          <textarea
-            matInput
-            [formControl]="infoGroup.controls.description"
-            rows="5"
-          ></textarea>
-        </mat-form-field>
-      </p>
+      <app-info-editor [form]="tripForm.controls.info"></app-info-editor>
     </mat-card-content>
   </mat-card>
 
