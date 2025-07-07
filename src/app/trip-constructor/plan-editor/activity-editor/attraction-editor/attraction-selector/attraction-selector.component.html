@@ -1,0 +1,28 @@
+<mat-form-field
+  subscriptSizing="dynamic"
+  class="form-field"
+  appearance="outline"
+  [matTooltip]="tooltip"
+>
+  <mat-label>Pick your Attraction</mat-label>
+  <input
+    #selector
+    matInput
+    type="text"
+    spellcheck="false"
+    [formControl]="control"
+    [matAutocomplete]="auto"
+    (input)="filter()"
+    (focus)="filter()"
+  />
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    requireSelection
+    autoActiveFirstOption
+    [displayWith]="displayFn"
+  >
+    @for (option of filteredOptions | async; track option.id) {
+      <mat-option [value]="option.id">{{ option.displayName }}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>

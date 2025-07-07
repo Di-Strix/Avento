@@ -1,0 +1,19 @@
+<app-attraction-selector
+  [control]="formGroup.controls.attraction"
+  [cityId]="cityId"
+  [disabled]="!cityId"
+  [tooltip]="cityId ? undefined : 'Select destination city in the last transit first'"
+></app-attraction-selector>
+
+<mat-form-field
+  appearance="outline"
+  class="comment-field"
+  subscriptSizing="dynamic"
+>
+  <mat-label>Comment</mat-label>
+  <textarea
+    matInput
+    [formControl]="formGroup.controls.comment"
+    rows="4"
+  ></textarea>
+</mat-form-field>
