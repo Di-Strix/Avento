@@ -1,4 +1,5 @@
 export interface Trip {
+  id: string;
   directions: Trip.Directions;
   info: Trip.Info;
   plan: Trip.Plan.Item[];
@@ -12,7 +13,7 @@ export namespace Trip {
   }
 
   export interface Author {
-    userId: string;
+    id: string;
     name: string;
   }
 

@@ -46,7 +46,7 @@
           Author:
           <a
             class="link"
-            [routerLink]="['/user', trip.info.author.userId]"
+            [routerLink]="['/user', trip.info.author.id]"
             >{{ trip.info.author.name }}</a
           >
         </mat-card-subtitle>
@@ -87,7 +87,7 @@
                 <i>
                   <a
                     class="link"
-                    [routerLink]="['/user', comment.author.userId]"
+                    [routerLink]="['/user', comment.author.id]"
                   >
                     {{ comment.author.name }}
                   </a>
