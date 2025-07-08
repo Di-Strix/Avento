@@ -8,8 +8,8 @@ import { RouterLink } from '@angular/router';
 import { AuthService } from '../shared/auth/auth.service';
 import { User } from '../shared/auth/user';
 import { HeaderComponent } from '../shared/header/header.component';
-import { TripPreview } from '../shared/trip-preview';
 import { TripPreviewCardComponent } from '../shared/trip-preview-card/trip-preview-card.component';
+import { TripCard } from '../shared/trip/trip-cards';
 
 @Component({
   selector: 'app-profile',
@@ -20,8 +20,8 @@ import { TripPreviewCardComponent } from '../shared/trip-preview-card/trip-previ
 export class ProfileComponent implements OnInit {
   user: User | null = null;
 
-  userTrips: TripPreview[] = [];
-  favoriteTrips: TripPreview[] = [];
+  userTrips: TripCard[] | null = null;
+  favoriteTrips: TripCard[] | null = null;
 
   constructor(
     public authService: AuthService,

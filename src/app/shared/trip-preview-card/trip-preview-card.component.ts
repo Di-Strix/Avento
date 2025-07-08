@@ -9,7 +9,7 @@ import {
   MatCardTitleGroup,
 } from '@angular/material/card';
 
-import { TripPreview } from '../../shared/trip-preview';
+import { TripCard } from '../trip/trip-cards';
 
 @Component({
   selector: 'app-trip-preview-card',
@@ -18,7 +18,7 @@ import { TripPreview } from '../../shared/trip-preview';
   styleUrl: './trip-preview-card.component.scss',
 })
 export class TripPreviewCardComponent {
-  @Input({ required: true }) trip!: TripPreview;
+  @Input({ required: true }) trip!: TripCard;
   @Input() appearance: 'outlined' | 'raised' = 'raised';
 
   @Input()
