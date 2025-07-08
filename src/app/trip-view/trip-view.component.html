@@ -1,4 +1,5 @@
 <app-header>
+  @if (trip) {
     <div
       class="header-directions"
       align-center
@@ -11,6 +12,9 @@
       {{ to }}
       <mat-icon>flight_land</mat-icon>
     </div>
+  }
+</app-header>
+
 @if (trip) {
   <main>
     <!-- Info -->
