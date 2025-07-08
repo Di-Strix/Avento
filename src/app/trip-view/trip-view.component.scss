@@ -1,13 +1,17 @@
 @use '@angular/material' as mat;
 
 :host {
-  display: block;
+  min-height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+
   background-color: var(--mat-sys-surface-container-low);
 }
 
 main {
   --main-spacing: calc(20px + 3px * var(--mat-sys-density));
 
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto var(--main-spacing);
   padding: 0 var(--main-spacing) var(--main-spacing);
@@ -79,4 +83,16 @@ mat-card-header {
 
     transform: translate(-45%, -35%);
   }
+}
+
+.error-container {
+  flex-grow: 1;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+
+  font: var(--mat-sys-title-large);
+  color: var(--mat-sys-error);
 }
