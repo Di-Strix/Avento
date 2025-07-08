@@ -1,7 +1,9 @@
-<section class="sub-section">
-  <h3 class="sub-section-header">Author comment</h3>
-  <p>{{ plan.comment }}</p>
-</section>
+@if (plan.comment) {
+  <section class="sub-section">
+    <h3 class="sub-section-header">Author's comment</h3>
+    <p>{{ plan.comment }}</p>
+  </section>
+}
 
 <section class="sub-section">
   <h3 class="sub-section-header">Overview:</h3>
