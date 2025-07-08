@@ -82,3 +82,24 @@ body {
   cursor: pointer;
   color: var(--mat-sys-tertiary);
 }
+
+.snack {
+  &-success {
+    @include mat.snack-bar-overrides(
+      (
+        container-color: var(--mat-sys-tertiary),
+        supporting-text-color: var(--mat-sys-on-tertiary),
+        button-color: var(--mat-sys-on-tertiary),
+      )
+    );
+  }
+  &-error {
+    @include mat.snack-bar-overrides(
+      (
+        container-color: var(--mat-sys-error-container),
+        supporting-text-color: var(--mat-sys-on-error-container),
+        button-color: var(--mat-sys-on-error-container),
+      )
+    );
+  }
+}
