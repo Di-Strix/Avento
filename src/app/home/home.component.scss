@@ -34,53 +34,50 @@
   margin-bottom: calc(-160px - 10vh);
 
   background-color: var(--app-splash-screen-color);
+}
 
-  .splash-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.splash-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
-    opacity: 0.04;
-  }
+  opacity: 0.04;
+}
 
-  .brand-name {
-    position: relative;
-    height: 0px;
+.brand-name {
+  position: relative;
+  height: 0px;
 
-    color: var(--mat-sys-on-primary);
-    font: var(--mat-sys-display-large);
-    font-weight: 500;
-  }
+  color: var(--mat-sys-on-primary);
+  font: var(--mat-sys-display-large);
+  font-weight: 500;
+}
 
-  .search-bar {
-    padding: 20px;
-    padding-bottom: 0px;
+.search-bar {
+  padding: 20px;
 
-    width: max-content;
+  width: max-content;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
 
-    .search-button {
-      margin-bottom: 20px; // Account for field's gutter
-
-      @include mat.fab-overrides(
-        (
-          container-color: var(--mat-sys-primary),
-          foreground-color: var(--mat-sys-on-primary),
-          ripple-color: rgb(from var(--mat-sys-on-primary) r g b / 10%),
-          container-elevation-shadow: var(--mat-sys-level0),
-          hover-container-elevation-shadow: var(--mat-sys-level0),
-          pressed-container-elevation-shadow: var(--mat-sys-level0),
-          focus-container-elevation-shadow: var(--mat-sys-level0),
-        )
-      );
-    }
-  }
+.search-button {
+  @include mat.fab-overrides(
+    (
+      container-color: var(--mat-sys-primary),
+      foreground-color: var(--mat-sys-on-primary),
+      ripple-color: rgb(from var(--mat-sys-on-primary) r g b / 10%),
+      container-elevation-shadow: var(--mat-sys-level0),
+      hover-container-elevation-shadow: var(--mat-sys-level0),
+      pressed-container-elevation-shadow: var(--mat-sys-level0),
+      focus-container-elevation-shadow: var(--mat-sys-level0),
+    )
+  );
 }
 
 .trending-header {
