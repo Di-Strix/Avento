@@ -3,7 +3,10 @@
   class="header"
 ></app-header>
 
-<div class="splash-screen">
+<div
+  class="splash-screen"
+  [class.compact]="compactDesign"
+>
   <img
     class="splash-pattern"
     src="home/splash-pattern.svg"
@@ -56,6 +59,7 @@
         <app-trip-preview-card
           [trip]="trip"
           class="trending-card"
+          [vertical]="compactDesign"
           [routerLink]="['/trip', trip.id]"
         ></app-trip-preview-card>
       }

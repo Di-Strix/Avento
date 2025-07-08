@@ -123,3 +123,11 @@ footer {
   text-align: right;
   margin-right: 8px;
 }
+
+.compact .search-bar {
+  flex-direction: column;
+
+  .search-button {
+    width: 100%;
+  }
+}

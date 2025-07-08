@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, inject } from '@angular/core';
 import { MatFabButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -28,8 +29,10 @@ import { TripService } from '../shared/trip/trip.service';
 })
 export class HomeComponent implements OnInit {
   private readonly tripService = inject(TripService);
+  private readonly breakpointObserver = inject(BreakpointObserver);
 
   trips: TripCard[] | null = null;
+  compactDesign = this.breakpointObserver.isMatched('(width <= 620px)');
 
   ngOnInit(): void {
     this.tripService.loadTripsSuggestions().subscribe((cards) => {
