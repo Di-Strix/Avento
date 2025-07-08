@@ -28,51 +28,55 @@
         <h2 class="section-header">Your Trips</h2>
 
         <div class="card-list">
-          @for (trip of userTrips; track trip.id) {
-            <app-trip-preview-card
-              [trip]="trip"
-              appearance="outlined"
-              [showAuthor]="false"
-              vertical
-              [routerLink]="['/trip', trip.id]"
-            ></app-trip-preview-card>
-          }
+          @if (userTrips) {
+            @for (trip of userTrips; track trip.id) {
+              <app-trip-preview-card
+                [trip]="trip"
+                appearance="outlined"
+                [showAuthor]="false"
+                vertical
+                [routerLink]="['/trip', trip.id]"
+              ></app-trip-preview-card>
+            }
 
-          <div class="actions">
-            <button
-              mat-fab
-              class="card-list-button"
-              routerLink="/trip/create"
-              matTooltip="Create trip"
-            >
-              <mat-icon>add</mat-icon>
-            </button>
-          </div>
+            <div class="actions">
+              <button
+                mat-fab
+                class="card-list-button"
+                routerLink="/trip/create"
+                matTooltip="Create trip"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          }
         </div>
       </section>
       <section>
         <h2 class="section-header">Favorites</h2>
 
         <div class="card-list">
-          @for (trip of favoriteTrips; track trip.id) {
-            <app-trip-preview-card
-              [trip]="trip"
-              appearance="outlined"
-              vertical
-              [routerLink]="['/trip', trip.id]"
-            ></app-trip-preview-card>
-          }
+          @if (favoriteTrips) {
+            @for (trip of favoriteTrips; track trip.id) {
+              <app-trip-preview-card
+                [trip]="trip"
+                appearance="outlined"
+                vertical
+                [routerLink]="['/trip', trip.id]"
+              ></app-trip-preview-card>
+            }
 
-          <div class="actions">
-            <button
-              mat-fab
-              class="card-list-button"
-              routerLink="/"
-              matTooltip="Explore Trips"
-            >
-              <mat-icon>travel_explore</mat-icon>
-            </button>
-          </div>
+            <div class="actions">
+              <button
+                mat-fab
+                class="card-list-button"
+                routerLink="/"
+                matTooltip="Explore Trips"
+              >
+                <mat-icon>travel_explore</mat-icon>
+              </button>
+            </div>
+          }
         </div>
       </section>
     </main>
