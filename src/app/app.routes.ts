@@ -14,12 +14,12 @@ export const routes: Routes = [
   {
     path: 'trip',
     children: [
-      { path: 'create', component: TripConstructorComponent, canActivate: [authGuard] },
+      { path: 'create', component: TripConstructorComponent, canMatch: [authGuard] },
       { path: ':id', component: TripViewComponent },
     ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
+  { path: 'profile', component: ProfileComponent, canMatch: [authGuard] },
   { path: '**', component: PageNotFoundComponent },
 ];
