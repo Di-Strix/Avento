@@ -95,6 +95,7 @@ export namespace TripRequests {
       price: number;
       authorId: string;
       authorName: string;
+      image: string;
     }>;
   }
 

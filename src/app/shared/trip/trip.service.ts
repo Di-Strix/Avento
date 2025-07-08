@@ -101,6 +101,7 @@ export class TripService {
           id: card.id,
           price: card.price,
           duration: card.duration,
+          imageUrl: card.image,
         }) satisfies TripCard
     );
   }

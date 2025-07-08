@@ -6,4 +6,5 @@ export interface TripCard {
   duration: number;
   price: number;
   author: Trip.Author;
+  imageUrl: string;
 }
