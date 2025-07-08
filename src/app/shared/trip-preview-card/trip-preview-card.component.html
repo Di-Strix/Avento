@@ -5,22 +5,22 @@
   <div class="content">
     <mat-card-header>
       <mat-card-title-group>
-        <mat-card-title class="country"> {{ trip.country }} </mat-card-title>
+        <mat-card-title class="country"> {{ trip.name }} </mat-card-title>
         @if (showAuthor) {
-          <mat-card-subtitle class="author">by {{ trip.author }}</mat-card-subtitle>
+          <mat-card-subtitle class="author">by {{ trip.author.name }}</mat-card-subtitle>
         }
       </mat-card-title-group>
     </mat-card-header>
     <mat-card-content>
       <p class="duration">{{ trip.duration }} days</p>
-      <p class="price">${{ trip.totalPrice }}</p>
+      <p class="price">${{ trip.price }}</p>
     </mat-card-content>
   </div>
 
   <div class="image">
     <img
       [src]="trip.imageUrl"
-      alt="Imagine {{ trip.country }}"
+      alt="{{ trip.name }}"
     />
   </div>
 </mat-card>
