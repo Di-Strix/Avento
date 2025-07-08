@@ -97,7 +97,13 @@ export class LoginComponent {
       )
       .subscribe({
         error: (err: HttpErrorResponse) => {
-          this.snackBar.open(err.message, 'close', { duration: 3000 });
+          let message = '';
+
+          if (err instanceof HttpErrorResponse) {
+            message = err.error?.message || err.message;
+          }
+
+          this.snackBar.open(message, 'close', { duration: 3000, panelClass: 'snack-error' });
           console.error(err);
         },
       });
