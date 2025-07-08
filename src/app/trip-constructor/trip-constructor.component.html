@@ -1,4 +1,17 @@
-<app-header> </app-header>
+<app-header>
+  <div align-right>
+    <button
+      mat-flat-button
+      class="publish-button"
+      [disabled]="tripForm.invalid || uploading"
+      disabledInteractive
+      [matTooltip]="getUploadButtonError()"
+      (click)="publish()"
+    >
+      <mat-icon>publish</mat-icon>Publish!
+    </button>
+  </div>
+</app-header>
 
 <main>
   <!-- Info -->
