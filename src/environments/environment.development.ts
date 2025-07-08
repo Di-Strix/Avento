@@ -1,5 +1,8 @@
 export const environment = {
   auth: {
-    endpoint: 'http://localhost:3000/',
+    endpoint: 'http://localhost:3000/api',
+  },
+  api: {
+    endpoint: 'http://localhost:3000/api',
   },
 };
