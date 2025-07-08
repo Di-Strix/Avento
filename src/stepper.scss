@@ -51,7 +51,7 @@ ol.stepper > li:not(:first-of-type)::before {
   border-left: 1px solid var(--mat-sys-outline);
 
   left: calc(1.5em / 2);
-  top: 0;
+  top: calc(0px - var(--stepper-item-margin) + var(--stepper-trace-offset));
   bottom: calc(50% + var(--stepper-marker-size) / 2 + var(--stepper-trace-offset));
 }
 
@@ -63,5 +63,5 @@ ol.stepper > li:not(:last-of-type)::after {
 
   left: calc(1.5em / 2);
   top: calc(50% + var(--stepper-marker-size) / 2 + var(--stepper-trace-offset));
-  bottom: calc(0px - var(--stepper-item-margin));
+  bottom: calc(0px - var(--stepper-trace-offset));
 }
