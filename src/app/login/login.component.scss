@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 :host {
   display: flex;
   flex-direction: column;
@@ -22,6 +24,12 @@
 
 .login-form {
   width: 400px;
+
+  @include mat.card-overrides(
+    (
+      elevated-container-color: var(--mat-sys-surface-container-lowest),
+    )
+  );
 
   .card-content {
     padding-top: 16px;
