@@ -7,6 +7,10 @@
   background-color: var(--mat-sys-surface-container-low);
 }
 
+.publish-button {
+  margin-right: 16px;
+}
+
 main {
   --main-spacing: calc(20px + 3px * var(--mat-sys-density));
 
