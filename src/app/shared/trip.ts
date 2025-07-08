@@ -7,20 +7,13 @@ export interface Trip {
 
 export namespace Trip {
   export interface Directions {
-    from: Directions.Item;
-    to: Directions.Item;
-  }
-
-  export namespace Directions {
-    export interface Item {
-      displayName: string;
-      cityId: string;
-    }
+    from: string;
+    to: string;
   }
 
   export interface Author {
-    username: string;
-    displayName: string;
+    userId: string;
+    name: string;
   }
 
   export interface Info {
