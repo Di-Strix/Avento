@@ -26,11 +26,16 @@
     <mat-label>Details</mat-label>
     <textarea
       matInput
+      required
       [formControl]="contentControl"
       class="comment-field"
       cols="38"
       rows="3"
     ></textarea>
+
+    @if (contentControl.hasError('minlength')) {
+      <mat-error>Comment content must be at least 5 or more symbols</mat-error>
+    }
   </mat-form-field>
   <button
     mat-flat-button

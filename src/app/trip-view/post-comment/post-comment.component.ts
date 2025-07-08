@@ -17,7 +17,7 @@ export class PostCommentComponent {
       validators: [Validators.minLength(3), Validators.maxLength(30)],
       nonNullable: true,
     }),
-    content: new FormControl<string>('', { nonNullable: true }),
+    content: new FormControl<string>('', { nonNullable: true, validators: [Validators.minLength(5)] }),
   });
 
   postComment() {
