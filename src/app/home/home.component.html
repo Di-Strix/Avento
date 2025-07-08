@@ -5,7 +5,7 @@
 
 <div
   class="splash-screen"
-  [class.compact]="compactDesign"
+  [class.compact]="compactDesign()"
 >
   <img
     class="splash-pattern"
@@ -59,7 +59,7 @@
         <app-trip-preview-card
           [trip]="trip"
           class="trending-card"
-          [vertical]="compactDesign"
+          [vertical]="compactDesign()"
           [routerLink]="['/trip', trip.id]"
         ></app-trip-preview-card>
       }

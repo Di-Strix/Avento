@@ -1,11 +1,14 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatFabButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
+
+import { map } from 'rxjs';
 
 import { HeaderComponent } from '../shared/header/header.component';
 import { TripPreviewCardComponent } from '../shared/trip-preview-card/trip-preview-card.component';
@@ -32,7 +35,7 @@ export class HomeComponent implements OnInit {
   private readonly breakpointObserver = inject(BreakpointObserver);
 
   trips: TripCard[] | null = null;
-  compactDesign = this.breakpointObserver.isMatched('(width <= 620px)');
+  compactDesign = toSignal(this.breakpointObserver.observe('(width <= 620px)').pipe(map((state) => state.matches)));
 
   ngOnInit(): void {
     this.tripService.loadTripsSuggestions().subscribe((cards) => {
