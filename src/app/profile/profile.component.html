@@ -5,8 +5,8 @@
     <div class="account-info">
       <div class="identity">
         <div class="avatar">
-          @if (user.imgUrl) {
-            <img [src]="user.imgUrl" />
+          @if (user.avatar) {
+            <img [src]="user.avatar" />
           } @else {
             <mat-icon class="avatar-placeholder"> account_circle </mat-icon>
           }

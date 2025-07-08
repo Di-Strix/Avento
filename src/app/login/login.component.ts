@@ -38,9 +38,9 @@ export class LoginComponent {
   loading: boolean = false;
 
   credentials = new FormGroup({
-    username: new FormControl<string>('', {
+    email: new FormControl<string>('', {
       nonNullable: true,
-      validators: [Validators.required, Validators.minLength(3)],
+      validators: [Validators.required, Validators.email],
     }),
     password: new FormControl<string>('', {
       nonNullable: true,
@@ -58,11 +58,11 @@ export class LoginComponent {
     this.showPassword = !this.showPassword;
   }
 
-  usernameErrorMessage(): string {
-    const control = this.credentials.controls.username;
+  emailErrorMessage(): string {
+    const control = this.credentials.controls.email;
 
-    if (control.hasError('required')) return 'Username or email is required';
-    if (control.hasError('minlength')) return 'Username or email is too short';
+    if (control.hasError('required')) return 'Email is required';
+    if (control.hasError('email')) return 'Not a valid email';
 
     return '';
   }
@@ -80,13 +80,13 @@ export class LoginComponent {
     if (this.credentials.invalid) return;
     if (this.loading) return;
 
-    const { username, password } = this.credentials.getRawValue();
+    const { email, password } = this.credentials.getRawValue();
 
     this.credentials.disable();
     this.loading = true;
 
     this.authService
-      .login(username, password, this.redirectTo)
+      .login(email, password, this.redirectTo)
       .pipe(
         tap({
           finalize: () => {

@@ -12,18 +12,18 @@
           class="input-field"
           appearance="outline"
         >
-          @let usernameControl = credentials.controls.username;
+          @let emailControl = credentials.controls.email;
 
           <mat-icon matPrefix>person</mat-icon>
-          <mat-label>Username or email</mat-label>
+          <mat-label>email</mat-label>
           <input
             matInput
-            autocomplete="username"
+            autocomplete="email"
             type="email"
-            [formControl]="usernameControl"
+            [formControl]="emailControl"
           />
-          @if (usernameControl.invalid) {
-            <mat-error>{{ usernameErrorMessage() }}</mat-error>
+          @if (emailControl.invalid) {
+            <mat-error>{{ emailErrorMessage() }}</mat-error>
           }
         </mat-form-field>
 

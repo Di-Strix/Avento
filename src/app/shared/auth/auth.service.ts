@@ -38,17 +38,13 @@ export class AuthService {
    * @returns {Observable<User>}
    * @throws {HttpErrorResponse}
    */
-  login(username: string, password: string, redirectTo?: string): typeof this.currentUser$ {
+  login(email: string, password: string, redirectTo?: string): typeof this.currentUser$ {
     const payload: AuthRequests.Login.Request = {
-      username,
+      email,
       password,
     };
-
     return this.httpClient.post<AuthRequests.Login.ResponseSuccess>(`${environment.auth.endpoint}/login`, payload).pipe(
-      tap((response) => {
-        this._authToken = response.token;
-        this._currentUser$.next(response.user);
-      }),
+      tap((response) => this.saveUser(response)),
       switchMap(() => this.currentUser$),
       first(),
       tap(() => redirectTo && this.router.navigateByUrl(redirectTo))
@@ -71,14 +67,19 @@ export class AuthService {
    * @returns {Observable<User>}
    * @throws {HttpErrorResponse}
    */
-  register(username: string, password: string, redirectTo?: string): typeof this.currentUser$ {
-    const payload: AuthRequests.Register.Request = {
-      username,
-      password,
-    };
-
+  register(data: AuthRequests.Register.Request, redirectTo?: string): typeof this.currentUser$ {
     return this.httpClient
-      .post<AuthRequests.Register.ResponseSuccess>(`${environment.auth.endpoint}/register`, payload)
-      .pipe(switchMap(() => this.login(username, password, redirectTo)));
+      .post<AuthRequests.Register.ResponseSuccess>(`${environment.auth.endpoint}/register`, data)
+      .pipe(
+        tap((response) => this.saveUser(response)),
+        switchMap(() => this.currentUser$),
+        first(),
+        tap(() => redirectTo && this.router.navigateByUrl(redirectTo))
+      );
+  }
+
+  private saveUser(response: AuthRequests.Login.ResponseSuccess | AuthRequests.Register.ResponseSuccess) {
+    this._authToken = response.token;
+    this._currentUser$.next(response.user);
   }
 }
