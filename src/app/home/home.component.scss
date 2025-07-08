@@ -110,6 +110,16 @@
       margin-bottom: 24px;
     }
   }
+
+  transition-property: opacity, transform;
+  transition-duration: 100ms, 1000ms;
+  transition-timing-function: cubic-bezier(0, 0, 0, 1);
+  transition-delay: 150ms;
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(300px);
+  }
 }
 
 footer {
