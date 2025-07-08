@@ -57,6 +57,8 @@ export class AuthService {
   logout() {
     this._authToken = null;
     this._currentUser$.next(null);
+
+    this.router.navigate([], { onSameUrlNavigation: 'reload' });
   }
 
   /**
