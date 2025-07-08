@@ -47,4 +47,10 @@ export class TripViewComponent {
         this.trip = trip;
       });
   }
+
+  addComment(comment: Trip.Comment) {
+    if (!this.trip) return;
+
+    this.trip.comments.push(comment);
+  }
 }
