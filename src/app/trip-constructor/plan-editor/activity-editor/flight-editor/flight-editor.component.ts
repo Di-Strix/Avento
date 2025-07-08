@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { createFlightConnectionItem } from '../../../helpers';
+import { ConstructorFormHelpers } from '../../../helpers/constructor-form-helpers';
 import { TripForm } from '../../../trip-form';
 
 import { AirportSelectorComponent } from './airport-selector/airport-selector.component';
@@ -26,8 +26,10 @@ export class FlightEditorComponent {
 
   control!: TripForm.Plan.Flight;
 
+  constructor(private readonly formHelpers: ConstructorFormHelpers) {}
+
   insertStopover(index: number) {
-    this.control.controls.connections.insert(index, createFlightConnectionItem());
+    this.control.controls.connections.insert(index, this.formHelpers.createFlightConnectionItem());
   }
 
   deleteStopover(index: number) {

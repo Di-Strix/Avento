@@ -3,11 +3,10 @@ import { AbstractControl, AsyncValidator, FormArray, FormControl, FormGroup, Val
 
 import { Observable, map, of, switchMap } from 'rxjs';
 
-import { AirportService } from '../shared/airport/airport.service';
 import { AttractionService } from '../shared/attraction/attraction.service';
 import { StayService } from '../shared/stay/stay.service';
 
-import { getCityIds } from './helpers';
+import { CityHelpers } from './helpers/city-helpers';
 import { TripForm } from './trip-form';
 
 type GenericItem = TripForm.Plan.GenericItem_v;
@@ -16,7 +15,7 @@ type GenericItem = TripForm.Plan.GenericItem_v;
 export class ActivityValidator implements AsyncValidator {
   private readonly attractionService = inject(AttractionService);
   private readonly stayService = inject(StayService);
-  private readonly airportService = inject(AirportService);
+  private readonly helpers = inject(CityHelpers);
 
   validate(control: AbstractControl): Observable<ValidationErrors | null> {
     if (!(control instanceof FormControl)) return of(null);
@@ -30,7 +29,7 @@ export class ActivityValidator implements AsyncValidator {
     if (!info) return of(null);
 
     const plan = planForm.getRawValue().filter((item) => isGenericItem(item)) as TripForm.Plan.Item_v[];
-    return getCityIds(plan, this.airportService).pipe(
+    return this.helpers.getCityIds(plan).pipe(
       switchMap((cityIds) => {
         const formId = info.appId;
         const formIndex = planForm.getRawValue().findIndex((item) => extractGenericInfo(item)?.appId === formId);

@@ -10,7 +10,8 @@ import { Observable, distinctUntilChanged, map, shareReplay, startWith, switchMa
 
 import { AirportService } from '../../shared/airport/airport.service';
 import { Trip } from '../../shared/trip';
-import { createAttraction, createFlight, createStay, getCityIds } from '../helpers';
+import { CityHelpers } from '../helpers/city-helpers';
+import { ConstructorFormHelpers } from '../helpers/constructor-form-helpers';
 import { TripForm } from '../trip-form';
 
 import { ActivityEditorComponent } from './activity-editor/activity-editor.component';
@@ -49,7 +50,7 @@ export class PlanEditorComponent {
     this.cityIds$ = form.valueChanges.pipe(
       startWith(null),
       map(() => this.formArray.getRawValue()),
-      switchMap((values) => getCityIds(values, this.airportService)),
+      switchMap((values) => this.cityHelpers.getCityIds(values)),
       distinctUntilChanged((prev, current) => prev.join() === current.join()),
       tap(() => {
         this.formArray.controls.forEach((group) => {
@@ -75,7 +76,11 @@ export class PlanEditorComponent {
   cityIds$!: Observable<Array<string | undefined>>;
   activeStep: number = 0;
 
-  constructor(private airportService: AirportService) {
+  constructor(
+    private airportService: AirportService,
+    private readonly cityHelpers: CityHelpers,
+    private readonly formHelpers: ConstructorFormHelpers
+  ) {
     this.dropPredicate = this.dropPredicate.bind(this);
   }
 
@@ -92,13 +97,13 @@ export class PlanEditorComponent {
 
     switch (type) {
       case 'flight':
-        activity = createFlight();
+        activity = this.formHelpers.createFlight();
         break;
       case 'stay':
-        activity = createStay();
+        activity = this.formHelpers.createStay();
         break;
       case 'attraction':
-        activity = createAttraction();
+        activity = this.formHelpers.createAttraction();
         break;
       default:
         throw new Error(`unknown activity type ${type}`);
