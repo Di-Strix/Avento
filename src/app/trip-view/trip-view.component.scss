@@ -85,6 +85,15 @@ mat-card-header {
   }
 }
 
+.author-marker {
+  display: inline-block;
+  padding: 0.2em;
+
+  background-color: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  border-radius: var(--mat-sys-corner-extra-small);
+}
+
 .error-container {
   flex-grow: 1;
 

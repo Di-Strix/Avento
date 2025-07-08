@@ -64,23 +64,42 @@
       <mat-card-content>
         <section class="sub-section">
           <div class="comments-container">
-            @for (comment of trip.comments; track $index) {
-              <div class="comment">
-                <i>
+            @if (trip.comments.length) {
+              @for (comment of trip.comments; track $index) {
+                <div class="comment">
+                  @let isCurrentUser = comment.author.id === authService.currentUser()?.id;
+                  @let userLink = isCurrentUser ? ['/profile'] : ['/user', comment.author.id];
+                  @let isOP = comment.author.id === trip.info.author.id;
+
                   <a
                     class="link"
-                    [routerLink]="['/user', comment.author.id]"
+                    [routerLink]="userLink"
                   >
-                    {{ comment.author.name }}
+                    @if (isOP) {
+                      <b class="author-marker">OP</b>
+                    }
+                    @if (isCurrentUser) {
+                      You
+                    } @else {
+                      {{ comment.author.name }}
+                    }
                   </a>
-                  writes:
-                </i>
-                <blockquote>
-                  <h3>{{ comment.title }}</h3>
 
-                  {{ comment.content }}
-                </blockquote>
-              </div>
+                  @if (isCurrentUser) {
+                    write:
+                  } @else {
+                    writes:
+                  }
+
+                  <blockquote>
+                    <h3>{{ comment.title }}</h3>
+
+                    {{ comment.content }}
+                  </blockquote>
+                </div>
+              }
+            } @else {
+              No comments... yet
             }
           </div>
         </section>
