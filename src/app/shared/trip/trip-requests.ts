@@ -25,6 +25,7 @@ export namespace TripRequests {
       id: string;
       name: string;
     };
+
     type Hotel = {
       id: string;
       cityId: string;
