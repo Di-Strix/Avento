@@ -43,21 +43,23 @@
   <div></div>
 </div>
 
-<main class="trending">
-  <h2 class="trending-header">Trending</h2>
-  <mat-card
-    class="trending-cards-container"
-    appearance="outlined"
-  >
-    @for (trip of trips; track trip.id) {
-      <app-trip-preview-card
-        [trip]="trip"
-        class="trending-card"
-        [routerLink]="['/trip', trip.id]"
-      ></app-trip-preview-card>
-    }
-  </mat-card>
-</main>
+@if (trips) {
+  <main class="trending">
+    <h2 class="trending-header">Trending</h2>
+    <mat-card
+      class="trending-cards-container"
+      appearance="outlined"
+    >
+      @for (trip of trips; track trip.id) {
+        <app-trip-preview-card
+          [trip]="trip"
+          class="trending-card"
+          [routerLink]="['/trip', trip.id]"
+        ></app-trip-preview-card>
+      }
+    </mat-card>
+  </main>
+}
 
 <footer>
   <p>&copy; Avento 2025</p>
