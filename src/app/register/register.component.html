@@ -8,48 +8,19 @@
       </mat-card-header>
 
       <mat-card-content class="card-content">
-        <div class="row">
-          <mat-form-field appearance="outline">
-            @let firstNameControl = credentials.controls.firstName;
-
-            <mat-label>First name</mat-label>
-            <input
-              matInput
-              autocomplete="given-name"
-              type="text"
-              [formControl]="firstNameControl"
-            />
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            @let secondNameControl = credentials.controls.secondName;
-
-            <mat-label>Second name</mat-label>
-            <input
-              matInput
-              autocomplete="family-name"
-              type="text"
-              [formControl]="secondNameControl"
-            />
-          </mat-form-field>
-        </div>
-
         <mat-form-field
-          class="input-field"
           appearance="outline"
+          class="input-field"
         >
-          @let usernameControl = credentials.controls.username;
+          @let nameControl = credentials.controls.name;
 
-          <mat-icon matPrefix>person</mat-icon>
-          <mat-label>Username</mat-label>
+          <mat-label>Name</mat-label>
           <input
             matInput
-            autocomplete="username"
-            [formControl]="usernameControl"
+            autocomplete="name"
+            type="text"
+            [formControl]="nameControl"
           />
-          @if (usernameControl.invalid) {
-            <mat-error>{{ usernameErrorMessage() }}</mat-error>
-          }
         </mat-form-field>
 
         <mat-form-field
@@ -58,15 +29,15 @@
         >
           @let emailControl = credentials.controls.email;
 
-          <mat-icon matPrefix>person</mat-icon>
-          <mat-label>email</mat-label>
+          <mat-icon matPrefix>alternate_email</mat-icon>
+          <mat-label>E-Mail</mat-label>
           <input
             matInput
             autocomplete="email"
             type="email"
             [formControl]="emailControl"
           />
-          @if (usernameControl.invalid) {
+          @if (emailControl.invalid) {
             <mat-error>{{ emailErrorMessage() }}</mat-error>
           }
         </mat-form-field>

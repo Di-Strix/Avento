@@ -19,10 +19,8 @@ export namespace AuthRequests {
 
   export namespace Register {
     export interface Request {
-      username: string;
       email: string;
-      firstName: string;
-      secondName: string;
+      name: string;
       password: string;
     }
 
