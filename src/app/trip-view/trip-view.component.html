@@ -116,10 +116,20 @@
       </mat-card-header>
       <mat-card-content>
         <mat-icon class="bg-icon">question_answer</mat-icon>
-        <app-post-comment
-          [tripId]="trip.id"
-          (onPosted)="addComment($event)"
-        ></app-post-comment>
+        @if (authService.currentUser()) {
+          <app-post-comment
+            [tripId]="trip.id"
+            (onPosted)="addComment($event)"
+          ></app-post-comment>
+        } @else {
+          To post a comment, you must authorize first.
+          <button
+            mat-button
+            (click)="login()"
+          >
+            Login
+          </button>
+        }
       </mat-card-content>
     </mat-card>
   </main>

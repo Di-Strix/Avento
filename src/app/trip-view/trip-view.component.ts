@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIcon } from '@angular/material/icon';
@@ -28,6 +29,7 @@ import { PostCommentComponent } from './post-comment/post-comment.component';
     PlanViewComponent,
     RouterLink,
     HeaderComponent,
+    MatButtonModule,
   ],
   templateUrl: './trip-view.component.html',
   styleUrl: './trip-view.component.scss',
@@ -68,5 +70,13 @@ export class TripViewComponent {
     if (!this.trip) return;
 
     this.trip.comments.push(comment);
+  }
+
+  login() {
+    this.router.navigate(['/login'], {
+      queryParams: {
+        redirectTo: this.router.url,
+      },
+    });
   }
 }
