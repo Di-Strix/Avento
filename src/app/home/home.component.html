@@ -49,7 +49,10 @@
 </div>
 
 @if (trips) {
-  <main class="trending">
+  <main
+    class="trending"
+    [class.compact]="compactDesign()"
+  >
     <h2 class="trending-header">Trending</h2>
     <mat-card
       class="trending-cards-container"

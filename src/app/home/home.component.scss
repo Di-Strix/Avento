@@ -124,10 +124,15 @@ footer {
   margin-right: 8px;
 }
 
-.compact .search-bar {
-  flex-direction: column;
+.compact {
+  .search-bar {
+    flex-direction: column;
 
-  .search-button {
-    width: 100%;
+    .search-button {
+      width: 100%;
+    }
+  }
+  .trending-cards-container {
+    width: max-content;
   }
 }
