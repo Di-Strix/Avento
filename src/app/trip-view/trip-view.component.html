@@ -11,7 +11,7 @@
       {{ to }}
       <mat-icon>flight_land</mat-icon>
     </div>
-  </app-header>
+@if (trip) {
   <main>
     <!-- Info -->
     <mat-card
@@ -100,4 +100,11 @@
       </mat-card-content>
     </mat-card>
   </main>
+} @else if (error) {
+  <div class="error-container">
+    <span></span>
+    {{ error }}
+    <span></span>
+    <span></span>
+  </div>
 }
