@@ -41,7 +41,7 @@
     mat-flat-button
     class="comment-publish-button"
     type="submit"
-    [disabled]="form.invalid"
+    [disabled]="form.invalid || form.disabled"
   >
     Publish
   </button>
