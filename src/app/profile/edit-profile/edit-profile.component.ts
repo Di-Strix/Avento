@@ -7,8 +7,8 @@ import { map } from 'rxjs';
 
 import { AuthService } from '../../shared/auth/auth.service';
 import { User } from '../../shared/auth/user';
-import { HeaderComponent } from '../../shared/header/header.component';
-import { IdentityPanelComponent } from '../../shared/identity-panel/identity-panel.component';
+import { HeaderComponent } from '../../shared/components/header/header.component';
+import { IdentityPanelComponent } from '../../shared/components/identity-panel/identity-panel.component';
 
 import { EmailSettingsComponent } from './email-settings/email-settings.component';
 import { GeneralSettingsComponent } from './general-settings/general-settings.component';

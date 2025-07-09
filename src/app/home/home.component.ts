@@ -11,8 +11,8 @@ import { Router, RouterLink } from '@angular/router';
 
 import { map } from 'rxjs';
 
-import { HeaderComponent } from '../shared/header/header.component';
-import { TripPreviewCardComponent } from '../shared/trip-preview-card/trip-preview-card.component';
+import { HeaderComponent } from '../shared/components/header/header.component';
+import { TripPreviewCardComponent } from '../shared/components/trip-preview-card/trip-preview-card.component';
 import { TripCard } from '../shared/trip/trip-cards';
 import { TripService } from '../shared/trip/trip.service';
 

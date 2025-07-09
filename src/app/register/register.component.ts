@@ -20,7 +20,7 @@ import { Router, RouterLink } from '@angular/router';
 import { merge, tap } from 'rxjs';
 
 import { AuthService } from '../shared/auth/auth.service';
-import { HeaderComponent } from '../shared/header/header.component';
+import { HeaderComponent } from '../shared/components/header/header.component';
 
 @Component({
   selector: 'app-register',

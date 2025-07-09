@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 
 import { AuthService } from '../shared/auth/auth.service';
-import { HeaderComponent } from '../shared/header/header.component';
+import { HeaderComponent } from '../shared/components/header/header.component';
 import { TripRequests } from '../shared/trip/trip-requests';
 import { TripService } from '../shared/trip/trip.service';
 

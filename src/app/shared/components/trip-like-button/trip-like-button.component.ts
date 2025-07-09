@@ -6,8 +6,8 @@ import { MatTooltip } from '@angular/material/tooltip';
 
 import { Subject, switchMap } from 'rxjs';
 
-import { AuthService } from '../auth/auth.service';
-import { TripService } from '../trip/trip.service';
+import { AuthService } from '../../auth/auth.service';
+import { TripService } from '../../trip/trip.service';
 
 @Component({
   selector: 'app-trip-like-button',

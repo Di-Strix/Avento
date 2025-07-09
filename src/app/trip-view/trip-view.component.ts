@@ -12,9 +12,9 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { map, switchMap, throwError } from 'rxjs';
 
 import { AuthService } from '../shared/auth/auth.service';
-import { HeaderComponent } from '../shared/header/header.component';
+import { HeaderComponent } from '../shared/components/header/header.component';
+import { TripLikeButtonComponent } from '../shared/components/trip-like-button/trip-like-button.component';
 import { Trip } from '../shared/trip';
-import { TripLikeButtonComponent } from '../shared/trip-like-button/trip-like-button.component';
 import { TripService } from '../shared/trip/trip.service';
 
 import { PlanViewComponent } from './plan-view/plan-view.component';

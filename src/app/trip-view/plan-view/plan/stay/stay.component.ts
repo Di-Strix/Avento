@@ -3,7 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
-import { RatingComponent } from '../../../../shared/rating/rating.component';
+import { RatingComponent } from '../../../../shared/components/rating/rating.component';
 import { Trip } from '../../../../shared/trip';
 
 @Component({

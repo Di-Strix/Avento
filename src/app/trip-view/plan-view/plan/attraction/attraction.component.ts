@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { RatingComponent } from '../../../../shared/rating/rating.component';
+import { RatingComponent } from '../../../../shared/components/rating/rating.component';
 import { Trip } from '../../../../shared/trip';
 
 @Component({

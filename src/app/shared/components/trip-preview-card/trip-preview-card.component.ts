@@ -9,8 +9,8 @@ import {
   MatCardTitleGroup,
 } from '@angular/material/card';
 
+import { TripCard } from '../../trip/trip-cards';
 import { TripLikeButtonComponent } from '../trip-like-button/trip-like-button.component';
-import { TripCard } from '../trip/trip-cards';
 
 @Component({
   selector: 'app-trip-preview-card',
