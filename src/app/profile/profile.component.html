@@ -2,27 +2,17 @@
 
 @if (user) {
   <div class="max-content-container container">
-    <div class="account-info">
-      <div class="identity">
-        <div class="avatar">
-          @if (user.avatar) {
-            <img [src]="user.avatar" />
-          } @else {
-            <mat-icon class="avatar-placeholder"> account_circle </mat-icon>
-          }
-        </div>
-        <div>
-          <h2 class="name">{{ user.name }}</h2>
-          <h3 class="bio">{{ user.bio }}</h3>
-        </div>
-        <button
-          mat-stroked-button
-          routerLink="edit"
-        >
-          Edit Profile
-        </button>
-      </div>
+    <div>
+      <app-identity-panel [user]="user"></app-identity-panel>
+      <button
+        class="edit-profile"
+        mat-stroked-button
+        routerLink="edit"
+      >
+        Edit Profile
+      </button>
     </div>
+
     <main>
       <section>
         <h2 class="section-header">Your Trips</h2>

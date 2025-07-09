@@ -1,0 +1,17 @@
+<div class="identity">
+  <div class="avatar">
+    @if (user.avatar) {
+      <img [src]="user.avatar" />
+    } @else {
+      <mat-icon class="avatar-placeholder"> account_circle </mat-icon>
+    }
+  </div>
+  <div>
+    <h2 class="name">{{ user.name }}</h2>
+    @if (user.bio) {
+      <h3 class="bio">{{ user.bio }}</h3>
+    } @else {
+      <h3 class="no-bio">No bio</h3>
+    }
+  </div>
+</div>

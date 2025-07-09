@@ -17,38 +17,9 @@
   gap: 48px;
 }
 
-.identity {
-  width: 256px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  .avatar {
-    container-type: inline-size;
-    width: 256px;
-    height: 256px;
-
-    .avatar-placeholder {
-      scale: 1.2;
-
-      width: 100cqw;
-      height: 100cqw;
-      font-size: 100cqw;
-      color: var(--mat-sys-on-surface);
-    }
-  }
-
-  .name {
-    font: var(--mat-sys-headline-medium);
-    text-align: center;
-    overflow-wrap: anywhere;
-  }
-
-  .bio {
-    font: var(--mat-sys-title-medium);
-    color: var(--mat-sys-on-surface);
-  }
+.edit-profile {
+  margin-top: 24px;
+  width: 100%;
 }
 
 main {
