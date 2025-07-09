@@ -38,12 +38,12 @@
         </mat-card-subtitle>
 
         <span class="spacer"></span>
-        @if (trip.info.author.id !== authService.currentUser()?.id) {
-          <app-trip-like-button
-            [liked]="trip.liked"
-            [tripId]="trip.id"
-          ></app-trip-like-button>
-        }
+
+        <app-trip-like-button
+          [liked]="trip.liked"
+          [tripId]="trip.id"
+          [authorId]="trip.info.author.id"
+        ></app-trip-like-button>
       </mat-card-header>
       <mat-card-content>
         <p>
