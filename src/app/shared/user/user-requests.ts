@@ -56,4 +56,22 @@ export namespace UserRequests {
     }
   }
 
+  export namespace UpdatePassword {
+    export interface Request {
+      currentPassword: string;
+      newPassword: string;
+    }
+
+    export interface Response {
+      message: string;
+      user: {
+        _id: string;
+        name: string;
+        bio: string;
+        avatar: string;
+        email: string;
+        phone: string;
+      };
+    }
+  }
 }

@@ -80,4 +80,19 @@ export class UserService {
       );
   }
 
+  updatePassword(currentPassword: string, newPassword: string) {
+    const payload = {
+      currentPassword,
+      newPassword,
+    } satisfies UserRequests.UpdatePassword.Request;
+
+    return this.httpClient
+      .put<UserRequests.UpdatePassword.Response>(environment.api.endpoint + '/settings/change-password', payload)
+      .pipe(
+        map((response) => response.user),
+        tap(({ _id: id, avatar, bio, email, name }) => {
+          this._updatedSelf$.next({ id, avatar, bio, email, name });
+        })
+      );
+  }
 }
