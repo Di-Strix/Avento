@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Subject, map, of, retry, shareReplay, switchMap } from 'rxjs';
+import { Subject, distinctUntilChanged, map, of, retry, shareReplay, switchMap } from 'rxjs';
 import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
 
 import { environment } from '../../../environments/environment';
@@ -27,6 +27,7 @@ export class MessagingService {
     openSubject$.pipe(map((e) => e.target as WebSocket)).subscribe((e) => e.send(JSON.stringify(this.authMessage())));
 
     this._bus$ = this.authService.currentUser$.pipe(
+      distinctUntilChanged((prev, curr) => prev?.id === curr?.id),
       map((user) => ({
         bus: user && webSocket<Message>({ url: environment.ws.endpoint, openObserver: openSubject$ }),
       })),
