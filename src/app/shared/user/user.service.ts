@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 
-import { Observable, map } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
+import { User } from '../auth/user';
 import { TripCard } from '../trip/trip-cards';
 
 import { PublicUser } from './public-user';
@@ -14,6 +15,9 @@ import { UserRequests } from './user-requests';
 })
 export class UserService {
   private readonly httpClient = inject(HttpClient);
+
+  private readonly _updatedSelf$ = new Subject<User>();
+  public readonly updatedSelf$ = this._updatedSelf$.asObservable();
 
   getUser(userId: string): Observable<{ profile: PublicUser; trips: TripCard[] }> {
     return this.httpClient.get<UserRequests.GetUser.Response>(environment.api.endpoint + '/users/' + userId).pipe(
