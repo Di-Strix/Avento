@@ -1,9 +1,15 @@
 <app-header></app-header>
 
 @if (user) {
-  <div class="max-content-container container">
-    <div>
-      <app-identity-panel [user]="user"></app-identity-panel>
+  <div
+    class="max-content-container container"
+    [class.compact]="compactDesign()"
+  >
+    <div class="identity-panel">
+      <app-identity-panel
+        [user]="user"
+        [horizontal]="compactDesign()"
+      ></app-identity-panel>
       <button
         class="edit-profile"
         mat-stroked-button

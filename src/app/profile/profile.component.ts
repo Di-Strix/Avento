@@ -1,9 +1,12 @@
-import { Component, DestroyRef, OnInit } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
+
+import { map } from 'rxjs';
 
 import { AuthService } from '../shared/auth/auth.service';
 import { User } from '../shared/auth/user';
@@ -28,10 +31,14 @@ import { TripService } from '../shared/trip/trip.service';
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent implements OnInit {
+  private readonly breakpointObserver = inject(BreakpointObserver);
+
   user: User | null = null;
 
   userTrips: TripCard[] | null = null;
   favoriteTrips: TripCard[] | null = null;
+
+  compactDesign = toSignal(this.breakpointObserver.observe('(width <= 620px)').pipe(map((state) => state.matches)));
 
   constructor(
     public authService: AuthService,

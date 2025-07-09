@@ -15,6 +15,19 @@
   padding: 16px;
   padding-right: 0;
   gap: 48px;
+
+  &.compact {
+    gap: 24px;
+    flex-direction: column;
+
+    .identity-panel {
+      padding-right: 16px;
+
+      .edit-profile {
+        margin-top: 12px;
+      }
+    }
+  }
 }
 
 .edit-profile {
