@@ -1,3 +1,4 @@
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, Input, OnInit, computed, inject } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -23,6 +24,15 @@ export class TripLikeButtonComponent implements OnInit {
 
   @Input() liked: boolean = false;
   @Input({ required: true }) tripId!: string;
+  @Input() authorId: string | null | undefined;
+
+  private _doNotHide: boolean = false;
+  @Input() set doNotHide(value: BooleanInput) {
+    this._doNotHide = coerceBooleanProperty(value);
+  }
+  get doNotHide() {
+    return this.doNotHide;
+  }
 
   ngOnInit(): void {
     this.clicks$.pipe(switchMap(() => this.tripService.likeTrip(this.tripId, this.liked))).subscribe({
