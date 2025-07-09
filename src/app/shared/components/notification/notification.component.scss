@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+
+.container {
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.title {
+  font: var(--mat-sys-body-large);
+}
+.subtitle {
+  color: var(--mat-sys-inverse-on-surface-variant);
+  font: var(--mat-sys-body-medium);
+}
+.author {
+  color: var(--mat-sys-tertiary-fixed-dim);
+}
+
+.close-button {
+  @include mat.button-overrides(
+    (
+      text-label-text-color: var(--mat-sys-inverse-primary),
+    )
+  );
+}

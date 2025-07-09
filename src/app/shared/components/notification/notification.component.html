@@ -1,0 +1,22 @@
+@if (notification) {
+  <div
+    class="container"
+    [routerLink]="['/trip', notification.trip.id]"
+    (click)="close($event)"
+  >
+    <mat-icon>notifications_active</mat-icon>
+    <div class="message">
+      <div class="title">
+        <span class="author">{{ notification.author.name }}</span> commented: {{ notification.comment.title }}
+      </div>
+      <div class="subtitle">On trip "{{ notification.trip.name }}"</div>
+    </div>
+    <button
+      mat-button
+      class="close-button"
+      (click)="close($event)"
+    >
+      ok!
+    </button>
+  </div>
+}
