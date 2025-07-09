@@ -29,8 +29,8 @@ export class TripService {
         ...trip,
         plan: trip.plan.map((item) => {
           if (item.type !== 'flight') return item;
-          const from = item.connections.at(0)?.displayName || '';
-          const to = item.connections.at(-1)?.displayName || '';
+          const from = item.connections.at(0)?.cityName || '';
+          const to = item.connections.at(-1)?.cityName || '';
 
           return {
             type: item.type,
