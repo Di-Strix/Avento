@@ -117,4 +117,13 @@ export namespace TripRequests {
       };
     }
   }
+
+  export namespace SearchTrips {
+    export interface Request {
+      from: string;
+      to: string;
+    }
+
+    export type Response = FetchCards.Response;
+  }
 }

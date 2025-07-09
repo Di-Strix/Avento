@@ -51,6 +51,19 @@ export class TripService {
     );
   }
 
+  searchTrips(from: string, to: string): Observable<TripCard[]> {
+    const payload = {
+      from,
+      to,
+    } satisfies TripRequests.SearchTrips.Request;
+
+    return this.httpClient
+      .get<TripRequests.SearchTrips.Response>(environment.api.endpoint + '/trips/search', {
+        params: payload,
+      })
+      .pipe(map((cards) => this.transformCards(cards)));
+  }
+
   loadTripsSuggestions(): Observable<TripCard[]> {
     return this.httpClient
       .get<TripRequests.FetchCards.Response>(environment.api.endpoint + '/trips')
