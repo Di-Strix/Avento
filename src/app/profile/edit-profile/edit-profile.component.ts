@@ -1,6 +1,5 @@
 import { Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatIcon } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { AuthService } from '../../shared/auth/auth.service';
@@ -16,7 +15,6 @@ import { PasswordSettingsComponent } from './password-settings/password-settings
   selector: 'app-edit-profile',
   imports: [
     HeaderComponent,
-    MatIcon,
     MatTabsModule,
     GeneralSettingsComponent,
     MatTabsModule,
