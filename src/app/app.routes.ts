@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { SearchComponent } from './search/search.component';
 import { TripConstructorComponent } from './trip-constructor/trip-constructor.component';
 import { TripViewComponent } from './trip-view/trip-view.component';
 
@@ -21,5 +22,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canMatch: [authGuard] },
+  { path: 'search', component: SearchComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
