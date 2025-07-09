@@ -1,7 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, DestroyRef, Input, OnDestroy, OnInit, inject } from '@angular/core';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { Component, Input, OnDestroy, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -9,13 +9,10 @@ import { RouterLink } from '@angular/router';
 
 import { Subject, map, takeUntil } from 'rxjs';
 
-import { AuthService } from '../shared/auth/auth.service';
-import { User } from '../shared/auth/user';
 import { HeaderComponent } from '../shared/header/header.component';
 import { IdentityPanelComponent } from '../shared/identity-panel/identity-panel.component';
 import { TripPreviewCardComponent } from '../shared/trip-preview-card/trip-preview-card.component';
 import { TripCard } from '../shared/trip/trip-cards';
-import { TripService } from '../shared/trip/trip.service';
 import { PublicUser } from '../shared/user/public-user';
 import { UserService } from '../shared/user/user.service';
 
