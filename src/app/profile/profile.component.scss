@@ -15,84 +15,84 @@
   padding: 16px;
   padding-right: 0;
   gap: 48px;
+}
 
-  .identity {
+.identity {
+  width: 256px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .avatar {
+    container-type: inline-size;
     width: 256px;
+    height: 256px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    .avatar-placeholder {
+      scale: 1.2;
 
-    .avatar {
-      container-type: inline-size;
-      width: 256px;
-      height: 256px;
-
-      .avatar-placeholder {
-        scale: 1.2;
-
-        width: 100cqw;
-        height: 100cqw;
-        font-size: 100cqw;
-        color: var(--mat-sys-on-surface);
-      }
-    }
-
-    .name {
-      font: var(--mat-sys-headline-medium);
-      overflow-wrap: anywhere;
-    }
-
-    .bio {
-      font: var(--mat-sys-title-medium);
+      width: 100cqw;
+      height: 100cqw;
+      font-size: 100cqw;
       color: var(--mat-sys-on-surface);
     }
   }
 
-  main {
-    flex-grow: 1;
+  .name {
+    font: var(--mat-sys-headline-medium);
+    overflow-wrap: anywhere;
+  }
 
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    gap: 16px;
+  .bio {
+    font: var(--mat-sys-title-medium);
+    color: var(--mat-sys-on-surface);
+  }
+}
 
-    .section-header {
-      font: var(--mat-sys-title-large);
+main {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 16px;
+}
+
+.section-header {
+  font: var(--mat-sys-title-large);
+}
+
+.card-list {
+  min-height: 100px;
+
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  align-items: center;
+
+  gap: 16px;
+  padding: 8px 0;
+
+  .actions {
+    margin: 0 24px;
+
+    &:first-child {
+      margin-left: 0;
     }
+  }
 
-    .card-list {
-      min-height: 100px;
-
-      display: flex;
-      flex-direction: row;
-      overflow-x: auto;
-      align-items: center;
-
-      gap: 16px;
-      padding: 8px 0;
-
-      .actions {
-        margin: 0 24px;
-
-        &:first-child {
-          margin-left: 0;
-        }
-      }
-
-      .card-list-button {
-        @include mat.fab-overrides(
-          (
-            container-shape: 50%,
-            container-color: var(--mat-sys-secondary-fixed-dim),
-            foreground-color: var(--mat-sys-on-secondary-fixed),
-            container-elevation-shadow: var(--mat-sys-level0),
-            focus-container-elevation-shadow: var(--mat-sys-level0),
-            hover-container-elevation-shadow: var(--mat-sys-level0),
-            pressed-container-elevation-shadow: var(--mat-sys-level0),
-          )
-        );
-      }
-    }
+  .card-list-button {
+    @include mat.fab-overrides(
+      (
+        container-shape: 50%,
+        container-color: var(--mat-sys-secondary-fixed-dim),
+        foreground-color: var(--mat-sys-on-secondary-fixed),
+        container-elevation-shadow: var(--mat-sys-level0),
+        focus-container-elevation-shadow: var(--mat-sys-level0),
+        hover-container-elevation-shadow: var(--mat-sys-level0),
+        pressed-container-elevation-shadow: var(--mat-sys-level0),
+      )
+    );
   }
 }
