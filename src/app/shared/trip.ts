@@ -31,6 +31,7 @@ export namespace Trip {
       export interface Entity {
         displayName: string;
         cityId: string;
+        cityName: string;
         id: string;
       }
     }

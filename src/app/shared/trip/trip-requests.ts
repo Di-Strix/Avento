@@ -48,7 +48,7 @@ export namespace TripRequests {
       plan: Array<
         | {
             type: 'flight';
-            connections: Array<{ displayName: string; cityId: string; id: string }>;
+            connections: Array<{ displayName: string; cityId: string; cityName: string; id: string }>;
           }
         | {
             type: 'stay';
