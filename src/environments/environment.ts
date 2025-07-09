@@ -5,4 +5,7 @@ export const environment = {
   api: {
     endpoint: '',
   },
+  ws: {
+    endpoint: '',
+  },
 };
