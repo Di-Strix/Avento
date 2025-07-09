@@ -13,6 +13,7 @@ import { map, switchMap, throwError } from 'rxjs';
 import { AuthService } from '../shared/auth/auth.service';
 import { HeaderComponent } from '../shared/header/header.component';
 import { Trip } from '../shared/trip';
+import { TripLikeButtonComponent } from '../shared/trip-like-button/trip-like-button.component';
 import { TripService } from '../shared/trip/trip.service';
 
 import { PlanViewComponent } from './plan-view/plan-view.component';
@@ -30,6 +31,7 @@ import { PostCommentComponent } from './post-comment/post-comment.component';
     RouterLink,
     HeaderComponent,
     MatButtonModule,
+    TripLikeButtonComponent,
   ],
   templateUrl: './trip-view.component.html',
   styleUrl: './trip-view.component.scss',
