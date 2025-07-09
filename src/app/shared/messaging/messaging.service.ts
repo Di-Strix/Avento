@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Subject, map, of, retry, switchMap } from 'rxjs';
+import { Subject, map, of, retry, shareReplay, switchMap } from 'rxjs';
 import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
 
 import { environment } from '../../../environments/environment';
@@ -33,7 +33,8 @@ export class MessagingService {
       map(({ bus }) => ({
         bus,
         notifications$: this.multiplex(bus, 'new_notification'),
-      }))
+      })),
+      shareReplay({ refCount: true })
     );
   }
 
@@ -49,7 +50,7 @@ export class MessagingService {
           () => ({ type: 'unsubscribe', payload: subscribeTo }),
           (msg) => msg?.type === subscribeTo
         )
-        .pipe(retry({ delay: 5000 })) || of()
+        .pipe(retry({ delay: 5000 }), shareReplay({ refCount: true })) || of()
     );
   }
 }
