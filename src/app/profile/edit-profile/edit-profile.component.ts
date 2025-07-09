@@ -1,6 +1,9 @@
-import { Component, DestroyRef } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { MatTabsModule } from '@angular/material/tabs';
+
+import { map } from 'rxjs';
 
 import { AuthService } from '../../shared/auth/auth.service';
 import { User } from '../../shared/auth/user';
@@ -26,7 +29,10 @@ import { PasswordSettingsComponent } from './password-settings/password-settings
   styleUrl: './edit-profile.component.scss',
 })
 export class EditProfileComponent {
+  private readonly breakpointObserver = inject(BreakpointObserver);
+
   user: User | null = null;
+  compactDesign = toSignal(this.breakpointObserver.observe('(width <= 620px)').pipe(map((state) => state.matches)));
 
   constructor(
     public authService: AuthService,
