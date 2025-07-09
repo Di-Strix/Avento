@@ -44,6 +44,7 @@ export class PostCommentComponent {
       .subscribe({
         next: (comment) => {
           this.form.enable();
+          this.form.reset();
 
           // Dirty hack to reset matInput's error state
           this.resetButton.nativeElement.click();
