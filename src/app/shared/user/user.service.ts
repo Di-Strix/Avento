@@ -64,4 +64,20 @@ export class UserService {
       );
   }
 
+  updateEmail(newEmail: string, currentPassword: string) {
+    const payload = {
+      newEmail: newEmail.trim(),
+      currentPassword,
+    } satisfies UserRequests.UpdateEmail.Request;
+
+    return this.httpClient
+      .put<UserRequests.UpdateEmail.Response>(environment.api.endpoint + '/settings/change-email', payload)
+      .pipe(
+        map((response) => response.user),
+        tap(({ _id: id, avatar, bio, email, name }) => {
+          this._updatedSelf$.next({ id, avatar, bio, email, name });
+        })
+      );
+  }
+
 }

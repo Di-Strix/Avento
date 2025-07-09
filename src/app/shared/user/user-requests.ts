@@ -36,4 +36,24 @@ export namespace UserRequests {
       user: { id: string; name: string; email: string; bio: string; avatar: string };
     }
   }
+
+  export namespace UpdateEmail {
+    export interface Request {
+      newEmail: string;
+      currentPassword: string;
+    }
+
+    export interface Response {
+      message: string;
+      user: {
+        _id: string;
+        name: string;
+        bio: string;
+        avatar: string;
+        email: string;
+        phone: string;
+      };
+    }
+  }
+
 }
