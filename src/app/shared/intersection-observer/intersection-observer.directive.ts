@@ -1,13 +1,15 @@
-import { Directive, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 
 import { Subject, debounceTime } from 'rxjs';
 
 @Directive({
   selector: '[appIntersectionObserver]',
 })
-export class IntersectionObserverDirective implements OnDestroy {
+export class IntersectionObserverDirective implements OnInit, OnDestroy {
   @Output() enteredView = new EventEmitter();
   @Output() leftView = new EventEmitter();
+
+  @Input('appIntersectionObserver') register: boolean = true;
 
   @Input() threshold: number = 1.0;
   @Input() once: boolean = true;
@@ -15,9 +17,13 @@ export class IntersectionObserverDirective implements OnDestroy {
 
   @Input() intersectionContainer?: ElementRef;
 
-  private readonly observer;
+  private observer?: IntersectionObserver;
 
-  constructor(private readonly elementRef: ElementRef) {
+  constructor(private readonly elementRef: ElementRef) {}
+
+  ngOnInit(): void {
+    if (!this.register) return;
+
     const subject = new Subject<IntersectionObserverEntry[]>();
     subject.pipe(debounceTime(this.debounceTime)).subscribe((entries) => this.observerCallback(entries));
 
@@ -35,10 +41,10 @@ export class IntersectionObserverDirective implements OnDestroy {
     }
 
     this.enteredView.emit();
-    if (this.once) this.observer.disconnect();
+    if (this.once) this.observer?.disconnect();
   }
 
   ngOnDestroy(): void {
-    this.observer.disconnect();
+    this.observer?.disconnect();
   }
 }
