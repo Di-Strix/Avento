@@ -1,12 +1,13 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, DestroyRef, Input, OnDestroy, OnInit, inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, map, takeUntil } from 'rxjs';
 
 import { AuthService } from '../shared/auth/auth.service';
 import { User } from '../shared/auth/user';
@@ -34,6 +35,7 @@ import { UserService } from '../shared/user/user.service';
 })
 export class PublicProfileComponent implements OnDestroy {
   private readonly userService = inject(UserService);
+  private readonly breakpointObserver = inject(BreakpointObserver);
 
   @Input({ required: true }) set userId(id) {
     if (this.userId === id) return;
@@ -49,6 +51,7 @@ export class PublicProfileComponent implements OnDestroy {
   error: string = '';
   user: PublicUser | null = null;
   userTrips: TripCard[] | null = null;
+  compactDesign = toSignal(this.breakpointObserver.observe('(width <= 620px)').pipe(map((state) => state.matches)));
 
   reset$ = new Subject<void>();
 

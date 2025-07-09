@@ -1,8 +1,14 @@
 <app-header></app-header>
 
 @if (user) {
-  <div class="max-content-container container">
-    <app-identity-panel [user]="user"></app-identity-panel>
+  <div
+    class="max-content-container container"
+    [class.compact]="compactDesign()"
+  >
+    <app-identity-panel
+      [user]="user"
+      [horizontal]="compactDesign()"
+    ></app-identity-panel>
     <main>
       <section>
         <h2 class="section-header">Published Trips</h2>
