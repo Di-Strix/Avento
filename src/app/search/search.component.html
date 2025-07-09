@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<div
+  class="max-content-container"
+  [class.compact]="compactDesign()"
+>
+  <form
+    class="search-bar"
+    (submit)="search()"
+  >
+    <mat-form-field
+      appearance="outline"
+      floatLabel="always"
+      subscriptSizing="dynamic"
+    >
+      <mat-label>From</mat-label>
+      <input
+        matInput
+        [placeholder]="searchGroup.controls.from.defaultValue"
+        [formControl]="searchGroup.controls.from"
+      />
+    </mat-form-field>
+    <mat-form-field
+      appearance="outline"
+      floatLabel="always"
+      subscriptSizing="dynamic"
+    >
+      <mat-label>To</mat-label>
+      <input
+        matInput
+        [formControl]="searchGroup.controls.to"
+      />
+    </mat-form-field>
+    <button
+      mat-fab
+      type="submit"
+      class="search-button"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
+
+  <mat-divider style="width: 100%"></mat-divider>
+
+  <div class="cards-container">
+    @for (trip of trips; track trip.id) {
+      <app-trip-preview-card
+        [routerLink]="['/trip', trip.id]"
+        class="card"
+        appearance="outlined"
+        [trip]="trip"
+        [vertical]="compactDesign()"
+      ></app-trip-preview-card>
+    }
+  </div>
+
+  @if (!loading && !trips.length) {
+    <div class="not-found-message">
+      <div>
+        <p class="emoji">(>_<)</p>
+        <p class="text">No trips found</p>
+      </div>
+      <span></span>
+    </div>
+  }
+</div>

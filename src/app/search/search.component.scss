@@ -1,0 +1,90 @@
+@use '@angular/material' as mat;
+
+:host {
+  min-height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+
+  background-color: var(--mat-sys-surface-container-low);
+}
+
+.max-content-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  align-self: center;
+  align-items: center;
+}
+
+.search-bar {
+  padding: 24px;
+
+  width: max-content;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-button {
+  @include mat.fab-overrides(
+    (
+      container-color: var(--mat-sys-primary),
+      foreground-color: var(--mat-sys-on-primary),
+      ripple-color: rgb(from var(--mat-sys-on-primary) r g b / 10%),
+      container-elevation-shadow: var(--mat-sys-level0),
+      hover-container-elevation-shadow: var(--mat-sys-level0),
+      pressed-container-elevation-shadow: var(--mat-sys-level0),
+      focus-container-elevation-shadow: var(--mat-sys-level0),
+    )
+  );
+}
+
+.cards-container {
+  padding: 24px;
+}
+
+.card {
+  display: block;
+
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}
+
+.not-found-message {
+  height: 100%;
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  text-align: center;
+
+  .emoji {
+    font-size: 200px;
+    margin-bottom: 40px;
+
+    @media screen and (width < 600px) {
+      font-size: 100px;
+    }
+  }
+
+  .text {
+    font: var(--mat-sys-title-large);
+  }
+}
+
+.compact {
+  .search-bar {
+    flex-direction: column;
+
+    .search-button {
+      width: 100%;
+    }
+  }
+}
