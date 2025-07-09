@@ -103,3 +103,16 @@ body {
     );
   }
 }
+
+.error-container {
+  flex-grow: 1;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+
+  font: var(--mat-sys-title-large);
+  color: var(--mat-sys-error);
+}

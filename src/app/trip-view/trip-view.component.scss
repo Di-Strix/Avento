@@ -110,15 +110,3 @@ mat-card-header {
   color: var(--mat-sys-on-primary-container);
   border-radius: var(--mat-sys-corner-extra-small);
 }
-
-.error-container {
-  flex-grow: 1;
-
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: space-evenly;
-
-  font: var(--mat-sys-title-large);
-  color: var(--mat-sys-error);
-}
