@@ -13,35 +13,43 @@
   />
   <h1 class="brand-name">Avento</h1>
 
-  <mat-card class="search-bar">
-    <mat-form-field
-      appearance="outline"
-      floatLabel="always"
-      subscriptSizing="dynamic"
+  <mat-card>
+    <form
+      (submit)="search(from.value || from.placeholder, to.value || to.placeholder)"
+      class="search-bar"
     >
-      <mat-label>From</mat-label>
-      <input
-        matInput
-        placeholder="Vienna"
-      />
-    </mat-form-field>
-    <mat-form-field
-      appearance="outline"
-      floatLabel="always"
-      subscriptSizing="dynamic"
-    >
-      <mat-label>To</mat-label>
-      <input
-        matInput
-        placeholder="Paris"
-      />
-    </mat-form-field>
-    <button
-      mat-fab
-      class="search-button"
-    >
-      <mat-icon>search</mat-icon>
-    </button>
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        subscriptSizing="dynamic"
+      >
+        <mat-label>From</mat-label>
+        <input
+          #from
+          matInput
+          placeholder="Vienna"
+        />
+      </mat-form-field>
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        subscriptSizing="dynamic"
+      >
+        <mat-label>To</mat-label>
+        <input
+          #to
+          matInput
+          placeholder="New York"
+        />
+      </mat-form-field>
+      <button
+        mat-fab
+        class="search-button"
+        type="submit"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </form>
   </mat-card>
 
   <div></div>

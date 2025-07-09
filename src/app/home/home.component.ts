@@ -1,12 +1,13 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { FormsModule } from '@angular/forms';
 import { MatFabButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { map } from 'rxjs';
 
@@ -26,6 +27,7 @@ import { TripService } from '../shared/trip/trip.service';
     MatIconModule,
     RouterLink,
     HeaderComponent,
+    FormsModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -33,6 +35,7 @@ import { TripService } from '../shared/trip/trip.service';
 export class HomeComponent implements OnInit {
   private readonly tripService = inject(TripService);
   private readonly breakpointObserver = inject(BreakpointObserver);
+  private readonly router = inject(Router);
 
   trips: TripCard[] | null = null;
   compactDesign = toSignal(this.breakpointObserver.observe('(width <= 620px)').pipe(map((state) => state.matches)));
@@ -41,5 +44,9 @@ export class HomeComponent implements OnInit {
     this.tripService.loadTripsSuggestions().subscribe((cards) => {
       this.trips = cards;
     });
+  }
+
+  search(from: string, to: string) {
+    this.router.navigate(['/search'], { queryParams: { from, to } });
   }
 }
