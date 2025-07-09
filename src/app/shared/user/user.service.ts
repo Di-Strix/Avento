@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 
-import { Observable, Subject, map } from 'rxjs';
+import { Observable, Subject, map, tap } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { User } from '../auth/user';
@@ -46,4 +46,22 @@ export class UserService {
       }))
     );
   }
+
+  updateProfile(data: UserRequests.UpdateProfile.Request) {
+    const payload = {
+      name: data.name?.trim(),
+      bio: data.bio?.trim(),
+      email: data.email?.trim(),
+      avatar: data.avatar,
+    } satisfies UserRequests.UpdateProfile.Request;
+    return this.httpClient
+      .put<UserRequests.UpdateProfile.Response>(environment.api.endpoint + '/update-profile', payload)
+      .pipe(
+        map((response) => response.user),
+        tap(({ id, avatar, bio, email, name }) => {
+          this._updatedSelf$.next({ id, avatar, bio, email, name });
+        })
+      );
+  }
+
 }

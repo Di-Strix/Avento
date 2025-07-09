@@ -22,4 +22,18 @@ export namespace UserRequests {
       }>;
     }
   }
+
+  export namespace UpdateProfile {
+    export interface Request {
+      name?: string;
+      bio?: string;
+      email?: string;
+      avatar?: string;
+    }
+
+    export interface Response {
+      message: string;
+      user: { id: string; name: string; email: string; bio: string; avatar: string };
+    }
+  }
 }
