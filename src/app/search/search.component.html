@@ -42,24 +42,33 @@
 
   <mat-divider style="width: 100%"></mat-divider>
 
-  <div class="cards-container">
-    @for (trip of trips; track trip.id) {
-      <app-trip-preview-card
-        [routerLink]="['/trip', trip.id]"
-        class="card"
-        appearance="outlined"
-        [trip]="trip"
-        [vertical]="compactDesign()"
-      ></app-trip-preview-card>
-    }
-  </div>
+  @if (!error) {
+    <div class="cards-container">
+      @for (trip of trips; track trip.id) {
+        <app-trip-preview-card
+          [routerLink]="['/trip', trip.id]"
+          class="card"
+          appearance="outlined"
+          [trip]="trip"
+          [vertical]="compactDesign()"
+        ></app-trip-preview-card>
+      }
+    </div>
 
-  @if (!loading && !trips.length) {
-    <div class="not-found-message">
-      <div>
-        <p class="emoji">(>_<)</p>
-        <p class="text">No trips found</p>
+    @if (!loading && !trips.length) {
+      <div class="not-found-message">
+        <div>
+          <p class="emoji">(>_<)</p>
+          <p class="text">No trips found</p>
+        </div>
+        <span></span>
       </div>
+    }
+  } @else {
+    <div class="error-container">
+      <span></span>
+      {{ error }}
+      <span></span>
       <span></span>
     </div>
   }

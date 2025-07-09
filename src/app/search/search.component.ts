@@ -1,4 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,6 +48,7 @@ export class SearchComponent implements OnInit {
     to: new FormControl('', { nonNullable: true }),
   });
 
+  error: string = '';
   trips: TripCard[] = [];
   loading = false;
 
@@ -68,6 +70,7 @@ export class SearchComponent implements OnInit {
 
   search() {
     this.loading = true;
+    this.error = '';
 
     let { from, to } = this.searchGroup.getRawValue();
 
@@ -82,8 +85,14 @@ export class SearchComponent implements OnInit {
     this.tripService
       .searchTrips(from, to)
       .pipe(finalize(() => (this.loading = false)))
-      .subscribe((cards) => {
-        this.trips = cards;
+      .subscribe({
+        next: (cards) => {
+          this.trips = cards;
+        },
+        error: (err: HttpErrorResponse) => {
+          this.error = err.error?.message || err.message;
+          console.error(err);
+        },
       });
   }
 }
