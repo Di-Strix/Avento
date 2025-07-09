@@ -78,7 +78,7 @@ export class RegisterComponent {
   }
 
   passwordErrorMessage(control: AbstractControl<string>): string {
-    if (control.hasError('minlength')) return 'Password too short';
+    if (control.hasError('minlength')) return 'Password is too short';
     if (control.hasError('same')) return 'Passwords are not the same';
 
     return '';
