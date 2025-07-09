@@ -13,7 +13,17 @@
     </mat-card-header>
     <mat-card-content>
       <p class="duration">{{ trip.duration }} days</p>
-      <p class="price">${{ trip.price }}</p>
+
+      <div class="row">
+        <p class="price">${{ trip.price }}</p>
+        <span class="spacer"></span>
+        @if (!disableLike) {
+          <app-trip-like-button
+            [liked]="trip.liked"
+            [tripId]="trip.id"
+          ></app-trip-like-button>
+        }
+      </div>
     </mat-card-content>
   </div>
 

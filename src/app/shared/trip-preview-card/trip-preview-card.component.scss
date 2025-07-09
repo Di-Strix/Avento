@@ -35,6 +35,11 @@ mat-card {
     font: var(--mat-sys-title-medium);
   }
 
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+
   .price {
     font: var(--mat-sys-headline-medium);
     color: var(--mat-sys-tertiary);
@@ -42,6 +47,7 @@ mat-card {
 
   .image {
     width: 55%;
+    flex-shrink: 0;
     overflow: hidden;
 
     img {
@@ -61,6 +67,7 @@ mat-card {
 
     .image {
       width: 100%;
+      flex-shrink: 1;
       order: -1;
     }
   }
