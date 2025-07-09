@@ -1,0 +1,51 @@
+<app-header></app-header>
+
+@if (user) {
+  <div class="max-content-container container">
+    <div class="account-info">
+      <div class="identity">
+        <div class="avatar">
+          @if (user.avatar) {
+            <img [src]="user.avatar" />
+          } @else {
+            <mat-icon class="avatar-placeholder"> account_circle </mat-icon>
+          }
+        </div>
+        <div>
+          <h2 class="name">{{ user.name }}</h2>
+          <h3 class="bio">{{ user.bio }}</h3>
+        </div>
+      </div>
+    </div>
+    <main>
+      <section>
+        <h2 class="section-header">Published Trips</h2>
+
+        <div class="card-list">
+          @if (userTrips) {
+            @for (trip of userTrips; track trip.id) {
+              <app-trip-preview-card
+                [trip]="trip"
+                appearance="outlined"
+                [showAuthor]="false"
+                vertical
+                [routerLink]="['/trip', trip.id]"
+              ></app-trip-preview-card>
+            }
+
+            @if (!userTrips.length) {
+              <p class="card-list-message">This user hasn't published any trips yet.</p>
+            }
+          }
+        </div>
+      </section>
+    </main>
+  </div>
+} @else if (error) {
+  <div class="error-container">
+    <span></span>
+    {{ error }}
+    <span></span>
+    <span></span>
+  </div>
+}
