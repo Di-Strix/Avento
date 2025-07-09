@@ -1,4 +1,7 @@
-<div class="identity">
+<div
+  class="identity"
+  [class.horizontal]="horizontal"
+>
   <div class="avatar">
     @if (user.avatar) {
       <img [src]="user.avatar" />
