@@ -43,7 +43,7 @@ export class AuthService {
    */
   login(email: string, password: string, redirectTo?: string): typeof this.currentUser$ {
     const payload: AuthRequests.Login.Request = {
-      email,
+      email: email.trim(),
       password,
     };
     return this.httpClient.post<AuthRequests.Login.ResponseSuccess>(`${environment.auth.endpoint}/login`, payload).pipe(
@@ -73,8 +73,14 @@ export class AuthService {
    * @throws {HttpErrorResponse}
    */
   register(data: AuthRequests.Register.Request, redirectTo?: string): typeof this.currentUser$ {
+    const payload = {
+      name: data.name.trim(),
+      email: data.email.trim(),
+      password: data.password,
+    } satisfies AuthRequests.Register.Request;
+
     return this.httpClient
-      .post<AuthRequests.Register.ResponseSuccess>(`${environment.auth.endpoint}/register`, data)
+      .post<AuthRequests.Register.ResponseSuccess>(`${environment.auth.endpoint}/register`, payload)
       .pipe(
         tap((response) => this.saveUser(response)),
         switchMap(() => this.currentUser$),
