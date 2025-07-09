@@ -34,7 +34,6 @@ export class IntersectionObserverDirective implements OnDestroy {
       return;
     }
 
-    console.log('');
     this.enteredView.emit();
     if (this.once) this.observer.disconnect();
   }
