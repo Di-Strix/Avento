@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PublicProfileComponent } from './public-profile/public-profile.component';
 import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
 import { TripConstructorComponent } from './trip-constructor/trip-constructor.component';
@@ -22,6 +23,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canMatch: [authGuard] },
+  { path: 'user/:userId', component: PublicProfileComponent },
   { path: 'search', component: SearchComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
