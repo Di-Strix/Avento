@@ -1,0 +1,24 @@
+<mat-action-list>
+  @let notifications = notificationService.allNotifications();
+  @if (notifications.length) {
+    @for (notification of notifications; track notification.id) {
+      <a
+        mat-list-item
+        [appIntersectionObserver]="!notification.read"
+        [class.read]="notification.read"
+        [routerLink]="['/trip', notification.trip.id]"
+        (enteredView)="markSeen(notification.id)"
+        lines="2"
+      >
+        <span matListItemTitle>
+          <span class="author">{{ notification.author.name }}</span> commented: {{ notification.comment.title }}
+        </span>
+        On trip "{{ notification.trip.name }}"
+      </a>
+    }
+  } @else {
+    <mat-list-item>
+      <span matListItemTitle>No new notifications</span>
+    </mat-list-item>
+  }
+</mat-action-list>

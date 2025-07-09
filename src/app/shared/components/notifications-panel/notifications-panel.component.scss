@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  overflow-y: scroll;
+  max-height: 450px;
+}
+
+.author {
+  color: var(--mat-sys-tertiary);
+}
+
+.read {
+  background-color: var(--mat-sys-surface-container-highest);
+}
