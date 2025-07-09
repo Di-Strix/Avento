@@ -8,6 +8,10 @@
   background-color: var(--mat-sys-surface-container-low);
 }
 
+.compact {
+  --mat-sys-density: -2;
+}
+
 main {
   --main-spacing: calc(20px + 3px * var(--mat-sys-density));
 

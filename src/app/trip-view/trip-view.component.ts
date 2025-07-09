@@ -1,6 +1,7 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, Signal } from '@angular/core';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -40,12 +41,19 @@ export class TripViewComponent {
   trip?: Trip;
   error: string = '';
 
+  compactDesign: Signal<boolean | undefined>;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private readonly tripService: TripService,
     public readonly authService: AuthService,
-    public readonly router: Router
+    public readonly router: Router,
+    private readonly breakpointObserver: BreakpointObserver
   ) {
+    this.compactDesign = toSignal(
+      this.breakpointObserver.observe('(width <= 620px)').pipe(map((state) => state.matches))
+    );
+
     this.activatedRoute.paramMap
       .pipe(
         map((params) => params.get('id')),
