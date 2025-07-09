@@ -3,9 +3,10 @@ import { Injectable, computed } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 
-import { BehaviorSubject, catchError, first, of, switchMap, tap, throwError } from 'rxjs';
+import { BehaviorSubject, first, merge, switchMap, tap } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
+import { UserService } from '../user/user.service';
 
 import { AuthRequests } from './auth';
 import { User } from './user';
@@ -21,15 +22,17 @@ export class AuthService {
     return this._authToken;
   }
 
-  public get currentUser$() {
-    return this._currentUser$.asObservable();
-  }
-  public currentUser = toSignal(this.currentUser$, { requireSync: true });
+  public readonly currentUser$;
+  public readonly currentUser;
 
   constructor(
     private httpClient: HttpClient,
-    private router: Router
-  ) {}
+    private router: Router,
+    private readonly userService: UserService
+  ) {
+    this.currentUser$ = merge(this._currentUser$, this.userService.updatedSelf$);
+    this.currentUser = toSignal(this.currentUser$, { requireSync: true });
+  }
 
   /**
    * Function authorizes user using provided credentials
