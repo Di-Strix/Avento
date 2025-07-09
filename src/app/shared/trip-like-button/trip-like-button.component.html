@@ -1,0 +1,10 @@
+<button
+  mat-icon-button
+  [class.active]="liked"
+  (click)="like($event)"
+  [disabled]="disabled()"
+  disabledInteractive
+  [matTooltip]="disabled() ? 'Sign in first' : ''"
+>
+  <mat-icon>favorite</mat-icon>
+</button>
