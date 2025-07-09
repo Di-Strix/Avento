@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+@if (user) {
+  <div class="max-content-container container">
+    <app-identity-panel [user]="user"></app-identity-panel>
+    <main>
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="General">
+          <div class="tab-content">
+            <app-general-settings></app-general-settings>
+          </div>
+        </mat-tab>
+        <mat-tab label="Email">
+          <div class="tab-content">
+            <app-email-settings></app-email-settings>
+          </div>
+        </mat-tab>
+        <mat-tab label="Password">
+          <div class="tab-content">
+            <app-password-settings></app-password-settings>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </main>
+  </div>
+}
