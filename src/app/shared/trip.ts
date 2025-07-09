@@ -1,5 +1,7 @@
 export interface Trip {
   id: string;
+  liked: boolean;
+  likes: number;
   directions: Trip.Directions;
   info: Trip.Info;
   plan: Trip.Plan.Item[];

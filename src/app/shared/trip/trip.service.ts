@@ -101,6 +101,17 @@ export class TripService {
       );
   }
 
+  likeTrip(tripId: string, like: boolean): Observable<TripRequests.LikeTrip.Response> {
+    const payload = {
+      like,
+    } satisfies TripRequests.LikeTrip.Request;
+
+    return this.httpClient.post<TripRequests.LikeTrip.Response>(
+      environment.api.endpoint + '/trips/' + tripId + '/like',
+      payload
+    );
+  }
+
   private transformCards(response: TripRequests.FetchCards.Response): TripCard[] {
     return response.map(
       (card) =>
@@ -115,6 +126,7 @@ export class TripService {
           price: card.price,
           duration: card.duration,
           imageUrl: card.image,
+          liked: card.liked,
         }) satisfies TripCard
     );
   }

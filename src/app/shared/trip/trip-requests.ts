@@ -38,6 +38,8 @@ export namespace TripRequests {
     export interface Response {
       id: string;
       directions: { from: string; to: string };
+      liked: boolean;
+      likes: number;
       info: {
         author: Author;
         caption: string;
@@ -97,6 +99,7 @@ export namespace TripRequests {
       authorId: string;
       authorName: string;
       image: string;
+      liked: boolean;
     }>;
   }
 
@@ -125,5 +128,16 @@ export namespace TripRequests {
     }
 
     export type Response = FetchCards.Response;
+  }
+
+  export namespace LikeTrip {
+    export interface Request {
+      like: boolean;
+    }
+
+    export interface Response {
+      likes: number;
+      liked: boolean;
+    }
   }
 }

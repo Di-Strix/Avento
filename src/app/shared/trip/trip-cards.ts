@@ -7,4 +7,5 @@ export interface TripCard {
   price: number;
   author: Trip.Author;
   imageUrl: string;
+  liked: boolean;
 }
