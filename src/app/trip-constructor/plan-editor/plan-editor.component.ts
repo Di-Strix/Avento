@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { Observable, distinctUntilChanged, map, shareReplay, startWith, switchMap, tap } from 'rxjs';
 
-import { AirportService } from '../../shared/airport/airport.service';
 import { Trip } from '../../shared/trip';
 import { CityHelpers } from '../helpers/city-helpers';
 import { ConstructorFormHelpers } from '../helpers/constructor-form-helpers';
@@ -77,7 +76,6 @@ export class PlanEditorComponent {
   activeStep: number = 0;
 
   constructor(
-    private airportService: AirportService,
     private readonly cityHelpers: CityHelpers,
     private readonly formHelpers: ConstructorFormHelpers
   ) {
